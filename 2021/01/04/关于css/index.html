@@ -43,61 +43,82 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: pink"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="/img/a.png" class="js-avatar show">
-		</a>
-		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
-		</hgroup>
-		
-
-		<nav class="header-menu">
-			<ul>
+	<!--<div class="overlay" style="background: pink"></div>-->
+	<!-- 左侧边栏（上半部分）不设置背景颜色 -->
+	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+				<img src="/img/a.png" class="js-avatar show">
+			</a>
+			<hgroup>
+				<h1 class="header-author"><a href="/">
+						
+					</a></h1>
+			</hgroup>
 			
-				<li><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">娱有我心</a></li>
-	        
-				<li><a href="/2021/01/04/%E5%85%B3%E4%BA%8Ecss/">关于前端</a></li>
-	        
-				<li><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">关于后端</a></li>
-	        
-				<li><a href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">生活日记</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-    		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链链</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="https://weibo.com/u/5525416643" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="https://author.baidu.com/home?context=%7B%22app_id%22%3A%221630686982573806%22%7D&wfr=bjh" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-tian-jiang-zhi-er" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
 
+					<nav class="header-menu">
+						<ul>
+							
+								<li><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">
+										娱有我心
+									</a></li>
+								
+								<li><a href="/2021/01/04/%E5%85%B3%E4%BA%8Ecss/">
+										关于前端
+									</a></li>
+								
+								<li><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">
+										关于后端
+									</a></li>
+								
+								<li><a href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">
+										生活日记
+									</a></li>
+								
+						</ul>
+					</nav>
+					<nav class="header-smart-menu">
+						
+							
+								<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">
+									所有文章
+								</a>
+								
+									
+							
+								<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">
+									友情链链
+								</a>
+								
+									
+							
+								<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">
+									关于我
+								</a>
+								
+									
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#"
+									title="github"><i class="icon-github"></i></a>
+								
+								<a class="weibo" target="_blank" href="https://weibo.com/u/5525416643"
+									title="weibo"><i class="icon-weibo"></i></a>
+								
+								<a class="rss" target="_blank" href="https://author.baidu.com/home?context=%7B%22app_id%22%3A%221630686982573806%22%7D&wfr=bjh"
+									title="rss"><i class="icon-rss"></i></a>
+								
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-tian-jiang-zhi-er"
+									title="zhihu"><i class="icon-zhihu"></i></a>
+								
+						</div>
+					</nav>
+		</header>
+	</div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
