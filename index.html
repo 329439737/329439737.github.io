@@ -19,7 +19,7 @@
     <link rel="alternative" href="/atom.xml" title="娱我有心的个人博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/b.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -80,7 +80,7 @@
 						</ul>
 					</nav>
 					<nav>
-     <div style="color:red">总文章数：3</div>
+     <div style="color:red">总文章数：4</div>
 </nav>
 					<nav class="header-smart-menu">
 						
@@ -241,6 +241,133 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-搭建hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">搭建hexo博客</a>
+    </h1>
+  
+
+		<!--显示阅读次数-->
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2021-01-05T06:56:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
+<hr>
+<h2>前期所需要准备的坏境</h2>
+1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
+<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
+<p>如果不会安装，可以参考教程：</p>
+<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
+<p>查看node的版本号
+
+</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
+<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
+<p>查看版本</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
+
+<p>3.前两步已就位>安装hexo</p>
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
+<h6 style="color:red">====================================================================<h6>
+<h2>环境已就位,接下来开始搭建博客</h2>
+<hr>
+<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
+<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
+<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
+<p>4.运行本地服务测试</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
+
+<p>hexo g 说明：生成html文件 </p>
+<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
+<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
+<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
+<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
+<p>已经成功更新上去了，你会了吗？</p>
+<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
+<h6 style="color:red">====================================================================</h6>
+<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
+<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
+<p>下载后的主题都在这里：</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
+
+</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
+<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
+<h6 style="color:red">=============================END====================================</h6>
+
+<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
+</h2></h2></h2></h2></h6></h6>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
         </p>
       
 
