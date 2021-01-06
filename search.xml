@@ -15,6 +15,119 @@
       </tags>
   </entry>
   <entry>
+    <title>英语词汇学(一)</title>
+    <url>/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/</url>
+    <content><![CDATA[<div style="width:100%;height:100px;border-bottom: 2px double pink;"><h1 style="color:red">该文章记载关于英语词汇学的知识，只供内部人员参考</h1></div>
+
+<h1>1.知识导图</h1>
+词的基本概念
+<ol>
+<li>词的定义</li>
+<li>声音与意义</li>
+<li>声音与拼写</li>
+<li>词汇</li>
+<li>词汇的分类
+<ol>
+<li>基本词汇与非基本词汇</li>
+<li>实词与非虚词</li>
+<li>本组词与外来词</li>
+</ol>
+</li>
+</ol>
+<img src="/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/a.png" style="zoom:100%;">
+<hr>
+<a id="more"></a>
+<h1>2.知识精讲</h1>
+<ul>
+<li>1.词的定义
+<ul>
+<li>A world is a minimal free of alanguage that has a given sound and meaening syntactic function </li>
+<li>词语是语言最小的自由形式，拥有固定的声音和意义及句法功能</li>
+</ul>
+</li>
+<li>2.声音(sound)与意义(meaning)(之间的关系)
+<ul>
+<li>almost arbitrary  任意的</li>
+<li>no logical relationship betweet the sound which stands for a thing or an idea and the actual thing and idea itself  没有关系逻辑的</li>
+<li>conventional 约定成俗的</li>
+</ul>
+</li>
+<li>3.声音(sound)与拼写(from)(声音与拼写不统一的四个原因)
+<ul>
+<li>the English alphabet was adopted from the Romans,more phonemes than letters in English  英语拼写采用了罗马字母，每个音位不能用单独字母表示组合</li>
+<li>the pronunciation  has changed more rapidly than spelling over the years   发音比拼写变得快，拼写不易改变 </li>
+<li>some of the difference were created by early scribes 抄写错误</li>
+<li>the borrowings is an inportant channel of enriching the English vocabulary  外来词汇</li>
+</ul>
+</li>
+<li>4.词汇(词汇的定义)
+<ul>
+<li>Total number of the worlds in a language   在一种语言里所有单词的综合</li>
+<li>Words userd in a particular historical period   特殊历史时期使用的单词 </li>
+<li> ALL the woeds of a dialect,a book ,a discipline   某种方言，书籍，学科里的所以单词</li>
+</ul>
+</li>
+<li>5.词汇的分类
+<ul>
+<li>1.根据频率：基本词汇和非基本词汇
+<ul>
+<li>The Fundamaental Features of the Basic Word Stock   基本词汇的基本特征
+<ol>
+<li>1. ALL-National character （全名通用性  most important）</li>
+<li>2. Stability (相对稳定 relative)</li>
+<li>3. Producitivity (多产性)</li>
+<li>4. Polysemy (多义性)</li>
+<li>5. Collocability (可搭配性)</li>
+</ol>
+</li>
+<li>Nonbasic vocabulary  非基本词汇
+<ol>
+<li>1. Terminology (术语)</li>
+<li>2. Jargon (行语)</li>
+<li>3. Slang (俚语)</li>
+<li>4. Argot (暗语)</li>
+<li>5. Dialecal words (方言)</li>
+<li>6. Archaisms  (古语)</li>
+<li>7. Neologisms  (新词语)</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>2.根据概念：实词与虚词
+<ul>
+<li>实词：名形动副数</li>
+</ul>
+<ul>
+<li>虚词：冠代借助连</li>
+</ul>
+</li>
+<li>3.根据起源：本族词与外来词
+<ul>
+<li>Native words：本族词定义：Word brouht to Britain bu the German tribes;the Anggles,the Saxons, and the Jutes,so Known as Anglo-Saxon words</li>
+</ul>
+<ul>
+<li>Borrowed words 外来词包括：
+<ul>
+<li>Denizens (同化词)</li>
+<li>Aliens (非同化词)</li>
+<li>Translation-loans (翻译借词)</li>
+<li>Semantic-loans (借义词)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+]]></content>
+      <tags>
+        <tag>英语词汇学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搭建hexo博客</title>
     <url>/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
