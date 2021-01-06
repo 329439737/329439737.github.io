@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>我是谁</title>
-    <url>/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<p style="color:red">理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。</p>
-从一个菜鸟逐渐成为大神的故事，从这里开始了
+    <title>个人空间</title>
+    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
+    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29849287&auto=1&height=66"></iframe>
+<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
 <br>
+Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
+<br>
+<h2>开玩笑了，不要当真哦~</h2>
+<P>性别：男<p></p>
+<P>年龄：20+<p></p>
+<P>职业：程序员<p></p>
+<P>邮箱：15713935339@163.com<p></p>
+<P>座右铭：用双手创造财富~<p></p>
+<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
+</P></P></P></P></P>]]></content>
+      <tags>
+        <tag>我是谁</tag>
+        <tag>开心快乐每一天</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于css</title>
+    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
+    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
+<hr>
+<p style="color:red">1.关于nth-child</p>
+ul li:first-child{} >> ul的第一个孩子
 
-<img src="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/a.png" style="zoom:100%;">]]></content>
+<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
+<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
+<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
+<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
+<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
+<hr>
+<p style="color:red">2.关于background属性</p>
+background-attachment: ;fixed//固定背景图
+
+<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
+<hr>
+<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
+
+<p>三种样式表区别：</p>
+<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
+<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
+<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
   </entry>
   <entry>
     <title>搭建hexo博客</title>
@@ -73,52 +115,23 @@
 
 <h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
 </h2></h2></h2></h2></h6></h6>]]></content>
-  </entry>
-  <entry>
-    <title>关于css</title>
-    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
-    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
-<hr>
-<p style="color:red">1.关于nth-child</p>
-ul li:first-child{} >> ul的第一个孩子
-
-<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
-<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
-<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
-<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
-<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
-<hr>
-<p style="color:red">2.关于background属性</p>
-background-attachment: ;fixed//固定背景图
-
-<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
-<hr>
-<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
-
-<p>三种样式表区别：</p>
-<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
-<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
-<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>个人空间</title>
-    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
-    <content><![CDATA[<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
-<br>
-Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
-<br>
-<h2>开玩笑了，不要当真哦~</h2>
-<P>性别：男<p></p>
-<P>年龄：20+<p></p>
-<P>职业：程序员<p></p>
-<P>邮箱：15713935339@163.com<p></p>
-<P>座右铭：用双手创造财富~<p></p>
-<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
-</P></P></P></P></P>]]></content>
       <tags>
-        <tag>我是谁</tag>
-        <tag>开心快乐每一天</tag>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MY NAME WSH</title>
+    <url>/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<h2>先来听首歌吧</h2>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1418055994&auto=1&height=66"></iframe>
+<p style="color:red">理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。</p>
+从一个菜鸟逐渐成为大神的故事，从这里开始了
+<br>
+
+<img src="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/a.png" style="zoom:100%;">]]></content>
+      <tags>
+        <tag>WSH</tag>
       </tags>
   </entry>
 </search>
