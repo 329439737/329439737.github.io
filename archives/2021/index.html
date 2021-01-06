@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | 娱我有心的个人博客</title>
+  <title>Archives: 2021 | 娱我有心的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="娱我有心的个人博客">
+<meta property="og:title" content="娱我有心的博客">
 <meta property="og:url" content="http://example.com/archives/2021/index.html">
-<meta property="og:site_name" content="娱我有心的个人博客">
+<meta property="og:site_name" content="娱我有心的博客">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="娱我有心">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="娱我有心的个人博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="娱我有心的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/b.ico">
@@ -77,6 +77,10 @@
 										生活日记
 									</a></li>
 								
+								<li><a href="/archives">
+										所有文章
+									</a></li>
+								
 						</ul>
 					</nav>
 					<nav>
@@ -126,10 +130,11 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: pink"></div>
+  		<div class="overlay js-overlay"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
+	
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
@@ -140,6 +145,8 @@
 			</hgroup>
 			
 			
+			
+				
 			
 				
 			
@@ -171,15 +178,17 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">执行CEO、码农执行官、未来的管事</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">执行CEO、码农执行官、未来的管事</a></li>
 		        
-					<li style="width: 20%"><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">娱有我心</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">娱有我心</a></li>
 		        
-					<li style="width: 20%"><a href="/2021/01/04/%E5%85%B3%E4%BA%8Ecss/">关于前端</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021/01/04/%E5%85%B3%E4%BA%8Ecss/">关于前端</a></li>
 		        
-					<li style="width: 20%"><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">关于后端</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">关于后端</a></li>
 		        
-					<li style="width: 20%"><a href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">生活日记</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">生活日记</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/archives">所有文章</a></li>
 		        
 				</ul>
 			</nav>
@@ -305,6 +314,21 @@
 
         <div class="article-info info-on-right">
           
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">我是谁</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">开心快乐每一天</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
           
 
         </div>
@@ -410,6 +434,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">我是谁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">开心快乐每一天</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

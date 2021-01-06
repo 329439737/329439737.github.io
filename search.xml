@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>我是谁</title>
+    <url>/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<p style="color:red">理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。</p>
+从一个菜鸟逐渐成为大神的故事，从这里开始了
+<br>
+
+<img src="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/a.png" style="zoom:100%;">]]></content>
+  </entry>
+  <entry>
+    <title>搭建hexo博客</title>
+    <url>/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
+<hr>
+<h2>前期所需要准备的坏境</h2>
+1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
+<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
+<p>如果不会安装，可以参考教程：</p>
+<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
+<p>查看node的版本号
+
+</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
+<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
+<p>查看版本</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
+
+<p>3.前两步已就位>安装hexo</p>
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
+<h6 style="color:red">====================================================================<h6>
+<h2>环境已就位,接下来开始搭建博客</h2>
+<hr>
+<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
+<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
+<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
+<p>4.运行本地服务测试</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
+
+<p>hexo g 说明：生成html文件 </p>
+<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
+<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
+<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
+<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
+<p>已经成功更新上去了，你会了吗？</p>
+<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
+<h6 style="color:red">====================================================================</h6>
+<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
+<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
+<p>下载后的主题都在这里：</p>
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
+
+</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
+
+<img src="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
+<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
+<h6 style="color:red">=============================END====================================</h6>
+
+<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
+</h2></h2></h2></h2></h6></h6>]]></content>
+  </entry>
+  <entry>
+    <title>关于css</title>
+    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
+    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
+<hr>
+<p style="color:red">1.关于nth-child</p>
+ul li:first-child{} >> ul的第一个孩子
+
+<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
+<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
+<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
+<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
+<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
+<hr>
+<p style="color:red">2.关于background属性</p>
+background-attachment: ;fixed//固定背景图
+
+<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
+<hr>
+<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
+
+<p>三种样式表区别：</p>
+<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
+<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
+<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>个人空间</title>
+    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
+    <content><![CDATA[<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
+<br>
+Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
+<br>
+<h2>开玩笑了，不要当真哦~</h2>
+<P>性别：男<p></p>
+<P>年龄：20+<p></p>
+<P>职业：程序员<p></p>
+<P>邮箱：15713935339@163.com<p></p>
+<P>座右铭：用双手创造财富~<p></p>
+<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
+</P></P></P></P></P>]]></content>
+      <tags>
+        <tag>我是谁</tag>
+        <tag>开心快乐每一天</tag>
+      </tags>
+  </entry>
+</search>
