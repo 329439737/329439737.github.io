@@ -3,27 +3,44 @@
 <head>
   <meta charset="utf-8">
   
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+ 
+
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>英语词汇学(一) | 娱我有心的博客</title>
+  <title>英语词汇学(一) | 王贺贺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="该文章记载关于英语词汇学的知识，只供内部人员参考  1.知识导图 词的基本概念  词的定义 声音与意义 声音与拼写 词汇 词汇的分类  基本词汇与非基本词汇 实词与非虚词 本组词与外来词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="英语词汇学(一)">
 <meta property="og:url" content="http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/index.html">
-<meta property="og:site_name" content="娱我有心的博客">
+<meta property="og:site_name" content="王贺贺的博客">
 <meta property="og:description" content="该文章记载关于英语词汇学的知识，只供内部人员参考  1.知识导图 词的基本概念  词的定义 声音与意义 声音与拼写 词汇 词汇的分类  基本词汇与非基本词汇 实词与非虚词 本组词与外来词">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/a.png">
 <meta property="article:published_time" content="2021-01-06T04:52:00.000Z">
-<meta property="article:modified_time" content="2021-01-06T08:59:00.343Z">
-<meta property="article:author" content="娱我有心">
+<meta property="article:modified_time" content="2021-01-07T01:46:47.091Z">
+<meta property="article:author" content="王贺贺">
 <meta property="article:tag" content="英语词汇学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/a.png">
   
-    <link rel="alternative" href="/atom.xml" title="娱我有心的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="王贺贺的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/b.ico">
@@ -46,8 +63,13 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
+	<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+
+
 	<!--<div class="overlay" style="background: pink"></div>-->
 	<!-- 左侧边栏（上半部分）不设置背景颜色 -->
+
+
 	<div class="overlay"></div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -59,6 +81,7 @@
 						
 					</a></h1>
 			</hgroup>
+			
 			
 
 					<nav class="header-menu">
@@ -139,8 +162,27 @@
 								
 						</div>
 					</nav>
+					
 		</header>
+		
 	</div>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("11/23/2020 20:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+    setInterval("createtime()",250);
+</script>
+
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
@@ -255,6 +297,7 @@
   </span>
   </a>
 
+
 <!--显示阅读次数完毕-->
         
         <a href="/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/" class="archive-article-date">
@@ -266,7 +309,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">569字</span>
+        <span class="post-count">795字</span>
       </span>
     </span>
 
@@ -275,7 +318,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -387,10 +430,60 @@
 </ul>
 </li>
 </ul>
+<hr>
+<h1>3.真题演练</h1>
+<ol>
+<li>According to semanticists a word is a unit of <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:meaning     ----     B:sound      -----       C:combination of sounds      -----       D:group</li>
+
+</ol></li>
+<li>Which of the following is NOT true  <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:A word is the smallest free from of a language     ----     B:A word is a sound  untiy       -----       C:A word has a given meaning     -----       D:A word can be used  freely in a sentence</li>
+
+</ol></li>
+<li>Grammarians insits that a word be a () from that can function in a sentence  <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:small     ----     B:large      -----       C:fiexd       -----       D:free</li>
+
+</ol></li>
+<li>"Women" becomes "Frau" in German , "femme" in French and "Funu" in chinese. This example shows that in different language the same concept can be reprsented by different <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:sounds     ----     B:froms      -----       C:unities      -----       D:meanings</li>
+
+</ol></li>
+<li>The pronunciation has changed () spelling over the years <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:more slowly than      ----     B:as quickly as       -----       C:more repidly than       -----       D:not so quickly as</li>
+
+</ol></li>
+<li>Which of the following words does NOT belong to terminology <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:Penicillin      ----     B:Algebra      -----       C:Symphony      -----       D:Knife</li>
+
+</ol></li>
+<li>Of the characteristics listed for the basic word stock,the most in inportant is<input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:all national character     ----     B:producivity      -----       C:polysemy     -----       D:collocability</li>
+
+</ol></li>
+<li>Which of the following words is a neologism <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:Dip     ----     B:Thou      -----       C:Internet       -----       D:Bottom line</li>
+
+</ol></li>
+<li>According to semanticists a word is a unit of <input type="text" placeholder="这里填写答案">
+<ol>
+<li>A:meaning     ----     B:sound      -----       C:combination of sounds      -----       D:group</li>
+
+</ol></li>
 
 
 
 
+
+</ol>
       
 
       
@@ -542,7 +635,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">该文章记载关于英语词汇学的知识，只供内部人员参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">1.知识导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">2.知识精讲</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">该文章记载关于英语词汇学的知识，只供内部人员参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">1.知识导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">2.知识精讲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">3.真题演练</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -592,6 +685,7 @@
 
 
 
+
           </div>
         </div>
       </div>
@@ -599,7 +693,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 娱我有心
+    		&copy; 2021 王贺贺
     	</div>
       	<div class="footer-right">
 
@@ -751,7 +845,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,11 +857,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">英语词汇学</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,6 +870,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">英语词汇学</a>
               </li>
             
             <div class="clearfix"></div>
