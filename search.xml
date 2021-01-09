@@ -16,6 +16,25 @@
       </tags>
   </entry>
   <entry>
+    <title>my~w</title>
+    <url>/2021/01/09/wjian/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="5bcb9f7ef818b37f31b2522a9bdb5be0f3aa1697ed60bcfa35c05af993bf0884">e2668e12c1b7794ae60a99ff285fedfb29695d4dd5c7b7a14615e8c69309cf703e2a099ef4b7cbdddb07e28a27cd27c22e7a36bff210b9e56a1fcda57a4033ef3363d1a4d5bd9944f5b2fbdcff994174c901b609df854f34fd998218b6860574041a55ebee5584df3a78c6c587580d7ee03822088301725bc11f4d3ae2faf75752df5f324cc9ef711ad1a66e15af3f451feaf637e98688f53fee9bb959119adf</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入秘钥...</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>秘钥文件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>相册墙</title>
     <url>/2021/01/06/img/</url>
     <content><![CDATA[<hr>
