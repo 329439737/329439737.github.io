@@ -23,22 +23,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>英语词汇学(一) | 王贺贺的博客</title>
+  <title>搭建hexo博客 | 王贺贺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="该文章记载关于英语词汇学的知识，只供内部人员参考  1.知识导图 词的基本概念  词的定义 声音与意义 声音与拼写 词汇 词汇的分类  基本词汇与非基本词汇 实词与非虚词 本组词与外来词">
+  <meta name="description" content="既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。  前期所需要准备的坏境 1.node.js &gt;没有的先去安装&gt;下载：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F; 端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="英语词汇学(一)">
-<meta property="og:url" content="http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/index.html">
+<meta property="og:title" content="搭建hexo博客">
+<meta property="og:url" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="王贺贺的博客">
-<meta property="og:description" content="该文章记载关于英语词汇学的知识，只供内部人员参考  1.知识导图 词的基本概念  词的定义 声音与意义 声音与拼写 词汇 词汇的分类  基本词汇与非基本词汇 实词与非虚词 本组词与外来词">
+<meta property="og:description" content="既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。  前期所需要准备的坏境 1.node.js &gt;没有的先去安装&gt;下载：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F; 端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;，">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/a.png">
-<meta property="article:published_time" content="2021-01-06T04:52:00.000Z">
-<meta property="article:modified_time" content="2021-01-07T01:46:47.091Z">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png">
+<meta property="og:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png">
+<meta property="article:published_time" content="2020-01-01T06:56:20.000Z">
+<meta property="article:modified_time" content="2021-01-13T06:59:18.786Z">
 <meta property="article:author" content="王贺贺">
-<meta property="article:tag" content="英语词汇学">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/a.png">
+<meta name="twitter:image" content="http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png">
   
     <link rel="alternative" href="/atom.xml" title="王贺贺的博客" type="application/atom+xml">
   
@@ -95,7 +110,7 @@
 										娱有我心
 									</a></li>
 								
-								<li><a href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">
+								<li><a href="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">
 										生活日记
 									</a></li>
 								
@@ -122,7 +137,7 @@
 						</ul>
 					</nav>
 					<nav>
-     <div style="color:red">总文章数：8</div>
+     <div style="color:red">总文章数：9</div>
 </nav>
 					<nav class="header-smart-menu">
 						
@@ -243,7 +258,7 @@
 		        
 					<li style="width: 12.5%"><a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/">娱有我心</a></li>
 		        
-					<li style="width: 12.5%"><a href="/2021/01/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">生活日记</a></li>
+					<li style="width: 12.5%"><a href="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/">生活日记</a></li>
 		        
 					<li style="width: 12.5%"><a href="/2021/01/06/img/">相册墙</a></li>
 		        
@@ -269,14 +284,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-英语词汇学-一" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-搭建hexo博客" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      英语词汇学(一)
+      搭建hexo博客
     </h1>
   
 
@@ -284,7 +299,7 @@
 
 
   <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/" class="pageViews">0</span>次
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="pageViews">0</span>次
   </a>
 
 		<!--显示阅读次数-->
@@ -300,8 +315,8 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2021-01-06T04:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
+        <a href="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2020-01-01T06:56:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
 </a>
 		
           <div style="margin-top:10px;">
@@ -309,7 +324,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">795字</span>
+        <span class="post-count">769字</span>
       </span>
     </span>
 
@@ -318,7 +333,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -328,162 +343,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div style="width:100%;height:100px;border-bottom: 2px double pink;"><h1 style="color:red">该文章记载关于英语词汇学的知识，只供内部人员参考</h1></div>
-
-<h1>1.知识导图</h1>
-词的基本概念
-<ol>
-<li>词的定义</li>
-<li>声音与意义</li>
-<li>声音与拼写</li>
-<li>词汇</li>
-<li>词汇的分类
-<ol>
-<li>基本词汇与非基本词汇</li>
-<li>实词与非虚词</li>
-<li>本组词与外来词</li>
-</ol>
-</li>
-</ol>
-<img src="/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/a.png" style="zoom:100%;">
+        <p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
 <hr>
+<h2>前期所需要准备的坏境</h2>
+1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
+<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
 <a id="more"></a>
-<h1>2.知识精讲</h1>
-<ul>
-<li>1.词的定义
-<ul>
-<li>A world is a minimal free of alanguage that has a given sound and meaening syntactic function </li>
-<li>词语是语言最小的自由形式，拥有固定的声音和意义及句法功能</li>
-</ul>
-</li>
-<li>2.声音(sound)与意义(meaning)(之间的关系)
-<ul>
-<li>almost arbitrary  任意的</li>
-<li>no logical relationship betweet the sound which stands for a thing or an idea and the actual thing and idea itself  没有关系逻辑的</li>
-<li>conventional 约定成俗的</li>
-</ul>
-</li>
-<li>3.声音(sound)与拼写(from)(声音与拼写不统一的四个原因)
-<ul>
-<li>the English alphabet was adopted from the Romans,more phonemes than letters in English  英语拼写采用了罗马字母，每个音位不能用单独字母表示组合</li>
-<li>the pronunciation  has changed more rapidly than spelling over the years   发音比拼写变得快，拼写不易改变 </li>
-<li>some of the difference were created by early scribes 抄写错误</li>
-<li>the borrowings is an inportant channel of enriching the English vocabulary  外来词汇</li>
-</ul>
-</li>
-<li>4.词汇(词汇的定义)
-<ul>
-<li>Total number of the worlds in a language   在一种语言里所有单词的综合</li>
-<li>Words userd in a particular historical period   特殊历史时期使用的单词 </li>
-<li> ALL the woeds of a dialect,a book ,a discipline   某种方言，书籍，学科里的所以单词</li>
-</ul>
-</li>
-<li>5.词汇的分类
-<ul>
-<li>1.根据频率：基本词汇和非基本词汇
-<ul>
-<li>The Fundamaental Features of the Basic Word Stock   基本词汇的基本特征
-<ol>
-<li>1. ALL-National character （全名通用性  most important）</li>
-<li>2. Stability (相对稳定 relative)</li>
-<li>3. Producitivity (多产性)</li>
-<li>4. Polysemy (多义性)</li>
-<li>5. Collocability (可搭配性)</li>
-</ol>
-</li>
-<li>Nonbasic vocabulary  非基本词汇
-<ol>
-<li>1. Terminology (术语)</li>
-<li>2. Jargon (行语)</li>
-<li>3. Slang (俚语)</li>
-<li>4. Argot (暗语)</li>
-<li>5. Dialecal words (方言)</li>
-<li>6. Archaisms  (古语)</li>
-<li>7. Neologisms  (新词语)</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>2.根据概念：实词与虚词
-<ul>
-<li>实词：名形动副数</li>
-</ul>
-<ul>
-<li>虚词：冠代借助连</li>
-</ul>
-</li>
-<li>3.根据起源：本族词与外来词
-<ul>
-<li>Native words：本族词定义：Word brouht to Britain bu the German tribes;the Anggles,the Saxons, and the Jutes,so Known as Anglo-Saxon words</li>
-</ul>
-<ul>
-<li>Borrowed words 外来词包括：
-<ul>
-<li>Denizens (同化词)</li>
-<li>Aliens (非同化词)</li>
-<li>Translation-loans (翻译借词)</li>
-<li>Semantic-loans (借义词)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>如果不会安装，可以参考教程：</p>
+<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
+<p>查看node的版本号
+
+</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
+<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
+<p>查看版本</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
+
+<p>3.前两步已就位>安装hexo</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
+<h6 style="color:red">====================================================================<h6>
+<h2>环境已就位,接下来开始搭建博客</h2>
 <hr>
-<h1>3.真题演练</h1>
-<ol>
-<li>According to semanticists a word is a unit of <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:meaning     ----     B:sound      -----       C:combination of sounds      -----       D:group</li>
+<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
 
-</ol></li>
-<li>Which of the following is NOT true  <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:A word is the smallest free from of a language     ----     B:A word is a sound  untiy       -----       C:A word has a given meaning     -----       D:A word can be used  freely in a sentence</li>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
+<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
+<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
+<p>4.运行本地服务测试</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
 
-</ol></li>
-<li>Grammarians insits that a word be a () from that can function in a sentence  <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:small     ----     B:large      -----       C:fiexd       -----       D:free</li>
+<p>hexo g 说明：生成html文件 </p>
+<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
+<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
+<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
+<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
+<p>已经成功更新上去了，你会了吗？</p>
+<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
+<h6 style="color:red">====================================================================</h6>
+<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
 
-</ol></li>
-<li>"Women" becomes "Frau" in German , "femme" in French and "Funu" in chinese. This example shows that in different language the same concept can be reprsented by different <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:sounds     ----     B:froms      -----       C:unities      -----       D:meanings</li>
+</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
+<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
+<p>下载后的主题都在这里：</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
 
-</ol></li>
-<li>The pronunciation has changed () spelling over the years <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:more slowly than      ----     B:as quickly as       -----       C:more repidly than       -----       D:not so quickly as</li>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
 
-</ol></li>
-<li>Which of the following words does NOT belong to terminology <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:Penicillin      ----     B:Algebra      -----       C:Symphony      -----       D:Knife</li>
+</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
 
-</ol></li>
-<li>Of the characteristics listed for the basic word stock,the most in inportant is<input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:all national character     ----     B:producivity      -----       C:polysemy     -----       D:collocability</li>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
+<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
+<h6 style="color:red">=============================END====================================</h6>
 
-</ol></li>
-<li>Which of the following words is a neologism <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:Dip     ----     B:Thou      -----       C:Internet       -----       D:Bottom line</li>
-
-</ol></li>
-<li>According to semanticists a word is a unit of <input type="text" placeholder="这里填写答案">
-<ol>
-<li>A:meaning     ----     B:sound      -----       C:combination of sounds      -----       D:group</li>
-
-</ol></li>
-
-
-
-
-
-</ol>
+<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
+</h2></h2></h2></h2></h6></h6>
       
 
       
@@ -527,7 +448,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">英语词汇学</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
         		</li>
       		
 		</ul>
@@ -583,7 +508,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -597,20 +522,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/01/06/img/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/06/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          相册墙
+          英语词汇学(一)
         
       </div>
     </a>
   
-  
-    <a href="/2021/01/05/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">搭建hexo博客</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -635,7 +555,139 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">该文章记载关于英语词汇学的知识，只供内部人员参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">1.知识导图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">2.知识精讲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">3.真题演练</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">前期所需要准备的坏境</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+环境已就位,接下来开始搭建博客
+
+1.初始化&gt;在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）
+
+
+2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里
+
+3.输入命令符&gt;hexo init&gt;等待安装完成，myblog文件夹下会有东西，说明安装成功
+
+
+4.运行本地服务测试
+
+
+hexo g 说明：生成html文件 
+hexo s 说明：启用本地服务，一般端口是4000 
+在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。
+
+5.如何建立我自己的文章&gt;输入命令符：hexo new &quot;我的第一篇文章&quot;
+
+创建的文件会存放在E:\myblog\source\_posts文件夹下&gt;再次运行hexo s
+
+已经成功更新上去了，你会了吗？
+你已经学会搭建了，接下来你可以研究如何跟换主题等等了....
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。
+首先下载这个主题：
+$ cd &#x2F;e&#x2F;myblog&#x2F;  &gt;进入我们的根目录
+$ git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia   &gt;克隆主题
+下载后的主题都在这里：
+
+修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+
+
+如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。
+
+
+恭喜你，已经学会换主题。主题换的方法都一样的。
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;END&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号
+</span></a></li><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">1.0.0.0.2.</span> <span class="toc-text">
+环境已就位,接下来开始搭建博客
+
+1.初始化&gt;在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）
+
+
+2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里
+
+3.输入命令符&gt;hexo init&gt;等待安装完成，myblog文件夹下会有东西，说明安装成功
+
+
+4.运行本地服务测试
+
+
+hexo g 说明：生成html文件 
+hexo s 说明：启用本地服务，一般端口是4000 
+在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。
+
+5.如何建立我自己的文章&gt;输入命令符：hexo new &quot;我的第一篇文章&quot;
+
+创建的文件会存放在E:\myblog\source\_posts文件夹下&gt;再次运行hexo s
+
+已经成功更新上去了，你会了吗？
+你已经学会搭建了，接下来你可以研究如何跟换主题等等了....
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。
+首先下载这个主题：
+$ cd &#x2F;e&#x2F;myblog&#x2F;  &gt;进入我们的根目录
+$ git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia   &gt;克隆主题
+下载后的主题都在这里：
+
+修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+
+
+如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。
+
+
+恭喜你，已经学会换主题。主题换的方法都一样的。
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;END&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号
+</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">环境已就位,接下来开始搭建博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">你已经学会搭建了，接下来你可以研究如何跟换主题等等了....
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。
+首先下载这个主题：
+$ cd &#x2F;e&#x2F;myblog&#x2F;  &gt;进入我们的根目录
+$ git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia   &gt;克隆主题
+下载后的主题都在这里：
+
+修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+
+
+如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。
+
+
+恭喜你，已经学会换主题。主题换的方法都一样的。
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;END&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号
+</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。
+首先下载这个主题：
+$ cd &#x2F;e&#x2F;myblog&#x2F;  &gt;进入我们的根目录
+$ git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia   &gt;克隆主题
+下载后的主题都在这里：
+
+修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+
+
+如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。
+
+
+恭喜你，已经学会换主题。主题换的方法都一样的。
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;END&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号
+</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-6"><a class="toc-link"><span class="toc-number">4.0.0.0.2.</span> <span class="toc-text">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;END&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号
+</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">
+</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -855,6 +907,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
