@@ -15,6 +15,19 @@
       </tags>
   </entry>
   <entry>
+    <title>MYSQL-解决跨天(1天)统计正确时长</title>
+    <url>/2021/01/18/MYSQL-1/</url>
+    <content><![CDATA[<h2>如题：思路>使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</h2>
+
+<p>CREATE DEFINER=<code>hehe</code>@<code>%</code> PROCEDURE <code>时间格式化</code>(IN <code>tstart</code> varchar(200),IN <code>tend</code> varchar(200),IN <code>faly</code> varchar(200),OUT <code>num</code> varchar(200))<br>begin</p>
+<a id="more"></a>
+<p>#解决跨天统计时长<br>if faly = ‘否’ then<br>  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) / 3600 into num;<br>  if substring(num,1,1)= ‘-‘ then<br>       select TRIM(replace(num,’-‘,’ ‘)) into num;<br>    end if;<br>end if;<br>if faly = ‘是’ then<br>  if tstart =  tend then<br>     select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) + 24 into num;<br>    end if;<br>  if SUBSTRING_INDEX(tstart,’:’,1) &lt; SUBSTRING_INDEX(tend,’:’,1) then<br>      select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600 into num ;<br>        select 24 - num into num;<br>    end if;<br>    if SUBSTRING_INDEX(tstart,’:’,1) &gt; SUBSTRING_INDEX(tend,’:’,1) then<br>       if SUBSTRING_INDEX(tstart,’:’,1) &lt;12 and SUBSTRING_INDEX(tend,’:’,1) &lt;12 then<br>            select  (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600 into num;<br>            if substring(num,1,1)= ‘-‘ then<br>          select  24 - TRIM(replace(num,’-‘,’ ‘))  into num ;<br>         end if;<br>           select  24 - (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600  into num;<br>        end if;<br>        end if;<br>       if SUBSTRING_INDEX(tstart,’:’,1) &gt;12 and SUBSTRING_INDEX(tend,’:’,1) &lt; 12 then<br>          select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))  into num;<br>         end if;<br>end if;<br>end</p>
+]]></content>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VUE-全家桶</title>
     <url>/2021/01/18/VUE-%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
     <content><![CDATA[<h2>一、简介：山穷水尽疑无路，柳暗花明又一村</h2>

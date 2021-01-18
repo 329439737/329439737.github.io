@@ -23,19 +23,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>关于css | 王贺贺的博客</title>
+  <title>MYSQL-解决跨天(1天)统计正确时长 | 王贺贺的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍">
+  <meta name="description" content="如题：思路&gt;使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考  CREATE DEFINER&#x3D;hehe@% PROCEDURE 时间格式化(IN tstart varchar(200),IN tend varchar(200),IN faly varchar(200),">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于css">
-<meta property="og:url" content="http://example.com/2021/01/04/%E5%85%B3%E4%BA%8Ecss/index.html">
+<meta property="og:title" content="MYSQL-解决跨天(1天)统计正确时长">
+<meta property="og:url" content="http://example.com/2021/01/18/MYSQL-1/index.html">
 <meta property="og:site_name" content="王贺贺的博客">
-<meta property="og:description" content="前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍">
+<meta property="og:description" content="如题：思路&gt;使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考  CREATE DEFINER&#x3D;hehe@% PROCEDURE 时间格式化(IN tstart varchar(200),IN tend varchar(200),IN faly varchar(200),">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-04T09:10:16.000Z">
-<meta property="article:modified_time" content="2021-01-13T06:58:11.966Z">
+<meta property="article:published_time" content="2021-01-18T10:50:02.000Z">
+<meta property="article:modified_time" content="2021-01-18T11:06:31.165Z">
 <meta property="article:author" content="王贺贺">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="王贺贺的博客" type="application/atom+xml">
@@ -267,14 +267,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-关于css" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-MYSQL-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于css
+      MYSQL-解决跨天(1天)统计正确时长
     </h1>
   
 
@@ -282,7 +282,7 @@
 
 
   <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/01/04/%E5%85%B3%E4%BA%8Ecss/" class="pageViews">0</span>次
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/01/18/MYSQL-1/" class="pageViews">0</span>次
   </a>
 
 		<!--显示阅读次数-->
@@ -298,8 +298,8 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2021/01/04/%E5%85%B3%E4%BA%8Ecss/" class="archive-article-date">
-  	<time datetime="2021-01-04T09:10:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-04</time>
+        <a href="/2021/01/18/MYSQL-1/" class="archive-article-date">
+  	<time datetime="2021-01-18T10:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
 </a>
 		
           <div style="margin-top:10px;">
@@ -307,7 +307,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">316字</span>
+        <span class="post-count">257字</span>
       </span>
     </span>
 
@@ -326,29 +326,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
-<hr>
+        <h2>如题：思路>使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</h2>
+
+<p>CREATE DEFINER=<code>hehe</code>@<code>%</code> PROCEDURE <code>时间格式化</code>(IN <code>tstart</code> varchar(200),IN <code>tend</code> varchar(200),IN <code>faly</code> varchar(200),OUT <code>num</code> varchar(200))<br>begin</p>
 <a id="more"></a>
-<p style="color:red">1.关于nth-child</p>
-ul li:first-child{} >> ul的第一个孩子
-
-<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
-<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
-<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
-<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
-<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
-<hr>
-<p style="color:red">2.关于background属性</p>
-background-attachment: ;fixed//固定背景图
-
-<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
-<hr>
-<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
-
-<p>三种样式表区别：</p>
-<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
-<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
-<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
+<p>#解决跨天统计时长<br>if faly = ‘否’ then<br>  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) / 3600 into num;<br>  if substring(num,1,1)= ‘-‘ then<br>       select TRIM(replace(num,’-‘,’ ‘)) into num;<br>    end if;<br>end if;<br>if faly = ‘是’ then<br>  if tstart =  tend then<br>     select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) + 24 into num;<br>    end if;<br>  if SUBSTRING_INDEX(tstart,’:’,1) &lt; SUBSTRING_INDEX(tend,’:’,1) then<br>      select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600 into num ;<br>        select 24 - num into num;<br>    end if;<br>    if SUBSTRING_INDEX(tstart,’:’,1) &gt; SUBSTRING_INDEX(tend,’:’,1) then<br>       if SUBSTRING_INDEX(tstart,’:’,1) &lt;12 and SUBSTRING_INDEX(tend,’:’,1) &lt;12 then<br>            select  (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600 into num;<br>            if substring(num,1,1)= ‘-‘ then<br>          select  24 - TRIM(replace(num,’-‘,’ ‘))  into num ;<br>         end if;<br>           select  24 - (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600  into num;<br>        end if;<br>        end if;<br>       if SUBSTRING_INDEX(tstart,’:’,1) &gt;12 and SUBSTRING_INDEX(tend,’:’,1) &lt; 12 then<br>          select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))  into num;<br>         end if;<br>end if;<br>end</p>
 
       
 
@@ -393,7 +375,7 @@ background-attachment: ;fixed//固定背景图
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -449,7 +431,7 @@ background-attachment: ;fixed//固定背景图
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/04/%E5%85%B3%E4%BA%8Ecss/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/18/MYSQL-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -463,18 +445,9 @@ background-attachment: ;fixed//固定背景图
   
 <nav id="article-nav">
   
-    <a href="/2021/01/06/img/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          相册墙
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">个人空间</div>
+    <a href="/2021/01/18/VUE-%E5%85%A8%E5%AE%B6%E6%A1%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VUE-全家桶</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -501,7 +474,7 @@ background-attachment: ;fixed//固定背景图
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">如题：思路&gt;使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
