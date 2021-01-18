@@ -15,6 +15,57 @@
       </tags>
   </entry>
   <entry>
+    <title>VUE-全家桶</title>
+    <url>/2021/01/18/VUE-%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
+    <content><![CDATA[<h2>一、简介：山穷水尽疑无路，柳暗花明又一村</h2>
+<p>本文介绍Vue全家桶：Vue+Vue-router+Vuex+axios。</p>
+<a id="more"></a>
+<p>vue全家桶：vue + vuex (状态管理) + vue-router (路由) + vue-resource +axios +UI框架（iview、vant、elementUI等等）</p>
+<h2>二、VUE</h2>
+<p>Vue有著名的全家桶系列，包含了vue-router（http://router.vuejs.org），
+vuex（http://vuex.vuejs.org），
+ vue-resource（https://github.com/pagekit/vue-resource）
+ 。再加上构建工具vue-cli，sass样式，就是一个完整的vue项目的核心构成</p>
+
+<p>1.引入Vue</p>
+<ul>
+<li>开发环境：< script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" ></li>
+<li>生产环境：< script src="https://cdn.jsdelivr.net/npm/vue"></li>
+</ul>
+<p>环境引入完毕，接下来就可以进行实例了：官方文档说的很清楚了><a href="https://cn.vuejs.org/v2/guide/">官方文档</a></p>
+
+<p>2.Vue-router</p>
+<p>1.干什么？</p>
+<ul>
+<li> 嵌套的路由/视图表</li>
+<li> 模块化的、基于组件的路由配置</li>
+<li> 路由参数、查询、通配符</li>
+<li> 基于 Vue.js 过渡系统的视图过渡效果</li>
+<li> 嵌细粒度的导航控制</li>
+<li> 带有自动激活的 CSS class 的链接</li>
+<li> HTML5 历史模式或 hash 模式，在 IE9 中自动降级</li>
+<li> 自定义的滚动条行为</li>
+</ul>
+<p>2.进入<a href="https://router.vuejs.org/zh/">官方文档</a>查看更多...</p>
+3.Vuex
+<p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，适合开发大型单页应用。</p>
+<p>具体见<a href="https://vuex.vuejs.org/zh/">Vuex官方教程</a></p>
+4.axios
+<p>axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它可以帮你：</p>
+<ul>
+<li>从浏览器中创建 XMLHttpRequest</li>
+<li>从 node.js 发出 http 请求</li>
+<li>支持 Promise API</li>
+<li>转换请求和响应数据</li>
+<li>自动转换JSON数据</li>
+</ul>
+5.其他与之配合的框架：elementUI
+<p>elementUI 是基于 Vue 2.0 桌面端中后台组件库。</p>]]></content>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>相册墙</title>
     <url>/2021/01/06/img/</url>
     <content><![CDATA[<hr>
