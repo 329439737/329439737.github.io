@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>繁花似锦的生活</title>
-    <url>/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<h2>官人,臣妾为你准备了一首音乐</h2>
-理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。<p></p>
-从一个菜鸟逐渐成为大神的故事，从这里开始了
-<br>
-
-
-<img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/a.png" style="zoom:100%;">]]></content>
-      <tags>
-        <tag>WSH</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL-解决跨天(1天)统计正确时长</title>
-    <url>/2021/01/18/MYSQL-1/</url>
-    <content><![CDATA[<h2>如题：思路>使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</h2>
-
-<p>CREATE DEFINER=<code>hehe</code>@<code>%</code> PROCEDURE <code>时间格式化</code>(IN <code>tstart</code> varchar(200),IN <code>tend</code> varchar(200),IN <code>faly</code> varchar(200),OUT <code>num</code> varchar(200))<br>begin</p>
-<a id="more"></a>
-<p>#解决跨天统计时长<br>if faly = ‘否’ then<br>  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) / 3600 into num;<br>  if substring(num,1,1)= ‘-‘ then<br>       select TRIM(replace(num,’-‘,’ ‘)) into num;<br>    end if;<br>end if;<br>if faly = ‘是’ then<br>  if tstart =  tend then<br>     select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) + 24 into num;<br>    end if;<br>  if SUBSTRING_INDEX(tstart,’:’,1) &lt; SUBSTRING_INDEX(tend,’:’,1) then<br>      select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600 into num ;<br>        select 24 - num into num;<br>    end if;<br>    if SUBSTRING_INDEX(tstart,’:’,1) &gt; SUBSTRING_INDEX(tend,’:’,1) then<br>       if SUBSTRING_INDEX(tstart,’:’,1) &lt;12 and SUBSTRING_INDEX(tend,’:’,1) &lt;12 then<br>            select  (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600 into num;<br>            if substring(num,1,1)= ‘-‘ then<br>          select  24 - TRIM(replace(num,’-‘,’ ‘))  into num ;<br>         end if;<br>           select  24 - (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))/ 3600  into num;<br>        end if;<br>        end if;<br>       if SUBSTRING_INDEX(tstart,’:’,1) &gt;12 and SUBSTRING_INDEX(tend,’:’,1) &lt; 12 then<br>          select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))  into num;<br>         end if;<br>end if;<br>end</p>
-]]></content>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VUE-全家桶</title>
     <url>/2021/01/18/VUE-%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
     <content><![CDATA[<h2>一、简介：山穷水尽疑无路，柳暗花明又一村</h2>
@@ -79,74 +52,71 @@ vuex（http://vuex.vuejs.org），
       </tags>
   </entry>
   <entry>
-    <title>相册墙</title>
-    <url>/2021/01/06/img/</url>
-    <content><![CDATA[<hr>
+    <title>vue-钩子函数</title>
+    <url>/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3>Vue生命周期八大钩子函数</h3>
+视图如下：
 <a id="more"></a>
-<div style="float:left">
-<img src="/2021/01/06/img/a1.png">
-<hr>
-<img src="/2021/01/06/img/a2.png">
-<hr>
-<img src="/2021/01/06/img/a3.png">
-</div>
+<img src="/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/v.png" style="zoom:100%;">
+<h3>对应解释</h3>
 
-]]></content>
+<ul>
+<li>1.beforeCreate:
+<ul>
+<li>即将创建，此阶段为实例初始化之后，此时的数据观擦和事件机制都未形成</li>
+</ul>
+</li>
+<li>2.created:
+<ul>
+<li>创建完毕，在这个阶段vue实例已经创建完成</li>
+</ul>
+</li>
+<li>3.beforemount:
+<ul>
+<li>即将挂载，判断挂载节点是否存在</li>
+</ul>
+</li>
+<li>4.mounted:
+<ul>
+<li>渲染完毕，异步请求一般写在这个阶段，并将请求到的数据和DOM渲染到页面上</li>
+</ul>
+</li>
+<li>5.beforeUpdate:
+<ul>
+<li>即将更新渲染，表示data数据已更新，页面未更新</li>
+</ul>
+</li>
+<li>6.updated:
+<ul>
+<li>更新渲染后，表示页面和data数据已经全部更新完毕，</li>
+</ul>
+</li>
+<li>7.beforeDestroy:
+<ul>
+<li>销毁之前</li>
+</ul>
+</li>
+<li>8.destroyed:
+<ul>
+<li>销毁之后</li>
+</ul>
+</li>
+
+</ul>]]></content>
       <tags>
-        <tag>相册</tag>
+        <tag>vue.js</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
-    <title>关于css</title>
-    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
-    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
-<hr>
-<a id="more"></a>
-<p style="color:red">1.关于nth-child</p>
-ul li:first-child{} >> ul的第一个孩子
+    <title>MYSQL-解决跨天(1天)统计正确时长</title>
+    <url>/2021/01/18/MYSQL-1/</url>
+    <content><![CDATA[<h2>如题：思路>使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</h2>
 
-<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
-<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
-<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
-<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
-<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
-<hr>
-<p style="color:red">2.关于background属性</p>
-background-attachment: ;fixed//固定背景图
-
-<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
-<hr>
-<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
-
-<p>三种样式表区别：</p>
-<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
-<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
-<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE DEFINER&#x3D;&#96;hehe&#96;@&#96;%&#96; PROCEDURE &#96;时间格式化&#96;(IN &#96;tstart&#96; varchar(200),IN &#96;tend&#96; varchar(200),IN &#96;faly&#96; varchar(200),OUT &#96;num&#96; varchar(200))</span><br><span class="line">begin</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">#解决跨天统计时长</span><br><span class="line">if faly &#x3D; &#39;否&#39; then</span><br><span class="line">  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) &#x2F; 3600 into num;</span><br><span class="line">  if substring(num,1,1)&#x3D; &#39;-&#39; then </span><br><span class="line">	   select TRIM(replace(num,&#39;-&#39;,&#39; &#39;)) into num;</span><br><span class="line">	end if;</span><br><span class="line">end if;</span><br><span class="line">if faly &#x3D; &#39;是&#39; then</span><br><span class="line">  if tstart &#x3D;  tend then</span><br><span class="line">	 select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) + 24 into num;</span><br><span class="line">	end if;</span><br><span class="line">  if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &lt; SUBSTRING_INDEX(tend,&#39;:&#39;,1) then</span><br><span class="line">	  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600 into num ;</span><br><span class="line">		select 24 - num into num;</span><br><span class="line">	end if;</span><br><span class="line">	if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &gt; SUBSTRING_INDEX(tend,&#39;:&#39;,1) then</span><br><span class="line">	   if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &lt;12 and SUBSTRING_INDEX(tend,&#39;:&#39;,1) &lt;12 then</span><br><span class="line">		    select  (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600 into num;</span><br><span class="line">		    if substring(num,1,1)&#x3D; &#39;-&#39; then </span><br><span class="line">	      select  24 - TRIM(replace(num,&#39;-&#39;,&#39; &#39;))  into num ;</span><br><span class="line">	     end if;</span><br><span class="line">		   select  24 - (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600  into num;</span><br><span class="line">	    end if;</span><br><span class="line">	    end if;</span><br><span class="line">	   if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &gt;12 and SUBSTRING_INDEX(tend,&#39;:&#39;,1) &lt; 12 then</span><br><span class="line">		  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))  into num;</span><br><span class="line">		 end if;</span><br><span class="line">end if;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>个人空间</title>
-    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
-    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29849287&auto=1&height=66"></iframe>
-<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
-<a id="more"></a>
-<br>
-Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
-<br>
-<h2>开玩笑了，不要当真哦~</h2>
-<P>性别：男<p></p>
-<P>年龄：20+<p></p>
-<P>职业：程序员<p></p>
-<P>邮箱：15713935339@163.com<p></p>
-<P>座右铭：用双手创造财富~<p></p>
-<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
-</P></P></P></P></P>]]></content>
-      <tags>
-        <tag>我是谁</tag>
-        <tag>开心快乐每一天</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -271,107 +241,237 @@ v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如
       </tags>
   </entry>
   <entry>
-    <title>vue-钩子函数</title>
-    <url>/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3>Vue生命周期八大钩子函数</h3>
-视图如下：
+    <title>相册墙</title>
+    <url>/2021/01/06/img/</url>
+    <content><![CDATA[<hr>
 <a id="more"></a>
-<img src="/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/v.png" style="zoom:100%;">
-<h3>对应解释</h3>
+<div style="float:left">
+<img src="/2021/01/06/img/a1.png">
+<hr>
+<img src="/2021/01/06/img/a2.png">
+<hr>
+<img src="/2021/01/06/img/a3.png">
+</div>
 
-<ul>
-<li>1.beforeCreate:
-<ul>
-<li>即将创建，此阶段为实例初始化之后，此时的数据观擦和事件机制都未形成</li>
-</ul>
-</li>
-<li>2.created:
-<ul>
-<li>创建完毕，在这个阶段vue实例已经创建完成</li>
-</ul>
-</li>
-<li>3.beforemount:
-<ul>
-<li>即将挂载，判断挂载节点是否存在</li>
-</ul>
-</li>
-<li>4.mounted:
-<ul>
-<li>渲染完毕，异步请求一般写在这个阶段，并将请求到的数据和DOM渲染到页面上</li>
-</ul>
-</li>
-<li>5.beforeUpdate:
-<ul>
-<li>即将更新渲染，表示data数据已更新，页面未更新</li>
-</ul>
-</li>
-<li>6.updated:
-<ul>
-<li>更新渲染后，表示页面和data数据已经全部更新完毕，</li>
-</ul>
-</li>
-<li>7.beforeDestroy:
-<ul>
-<li>销毁之前</li>
-</ul>
-</li>
-<li>8.destroyed:
-<ul>
-<li>销毁之后</li>
-</ul>
-</li>
-
-</ul>]]></content>
+]]></content>
       <tags>
-        <tag>vue.js</tag>
-        <tag>css</tag>
+        <tag>相册</tag>
       </tags>
   </entry>
   <entry>
-    <title>英语词汇学(三)</title>
-    <url>/2020/01/10/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%89/</url>
-    <content><![CDATA[<h2 style="color:red;font-weight:blod">第三节：Word formation 词的构造法</h2>
-<ul>
-<li>目录：
-<ul>
-<li>1.词素</li>
-<li>2.词素变体</li>
-<li>3.词素分类</li>
-<li>4.词根词干</li>
-</ul>
-</li>
-</ul>
+    <title>关于css</title>
+    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
+    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
+<hr>
 <a id="more"></a>
+<p style="color:red">1.关于nth-child</p>
+ul li:first-child{} >> ul的第一个孩子
+
+<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
+<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
+<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
+<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
+<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
 <hr>
-<h5>1.Morphemes 词素(形位,语素) </h5>
-定义：The minimal meaningful units are known sa morphemes 最小的,有意思的单位叫做词素。
-<h5>2.词素变体 Allomorphs
-<p>词素是抽象单位，由分离的形素morph在话语中实现大多数词素是单个形素：bird、tree、green、sad.单独在句子中起作用的叫mono-morphemic words 单语素词</p>
-<p>一些词素根据在词中的位置不同可以由一个以上的morph（语素形式或词素形式）去现实  some morphems are realized by more than one morph accrording their position in a word </p>
-<h5>3.词素分类</h5>
+<p style="color:red">2.关于background属性</p>
+background-attachment: ;fixed//固定背景图
+
+<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
+<hr>
+<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
+
+<p>三种样式表区别：</p>
+<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
+<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
+<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人空间</title>
+    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
+    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29849287&auto=1&height=66"></iframe>
+<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
+<a id="more"></a>
+<br>
+Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
+<br>
+<h2>开玩笑了，不要当真哦~</h2>
+<P>性别：男<p></p>
+<P>年龄：20+<p></p>
+<P>职业：程序员<p></p>
+<P>邮箱：15713935339@163.com<p></p>
+<P>座右铭：用双手创造财富~<p></p>
+<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
+</P></P></P></P></P>]]></content>
+      <tags>
+        <tag>我是谁</tag>
+        <tag>开心快乐每一天</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端小知识-01</title>
+    <url>/2021/01/23/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86-01/</url>
+    <content><![CDATA[<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> 
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;">每天一个小知识<span> </span><span style="color:pink">前端小课堂开课了~</span></h4>
+</div>
+<p>今日课程：1.单位(px、em/rem) 2.call、bind、apply区别 3.什么是闭包？</p><a id="more"></a>
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">1.px、em、rem 是什么？有什么区别？~</span></h4>
+</div>
+
+
+<ul><li>px是像素，相对长度单位。像素px是相对于显示器屏幕分辨率而言的。特点如下：
 <ul>
-<li>1.Free morphemes (自由词素)：彼此之间相互独立的词素叫自由词素 Morphemes which are independent of other orphemes are considered to be free</li>
-<li>2.Bound morphemes (粘附词素):不能单独成立词的词素叫粘附词素 Morphemes which can not occur as separate words are bound 
-<ul>
-<li>1.Bound root 粘附词根 ：是附加形式，只能和其他词素组合在一起去构成一个单词</li>
-<li>2.Affix 词缀（前/后）：词缀是附属在单词上或者单词元素上以修改词语意义和功能的结构。</li>
+<li> IE无法调整那些使用px作为单位的字体大小；</li>
+<li> 国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li>
+<li> Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)；</li>
 </ul>
 </li>
+<li>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。
+<p>浏览器默认的字体是16px:所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。它不是一个固定的值，它会继承父级元素的字体大小，如果同及没有设置字体大小，他就会往上一级去找，依次类推。推荐一个个px、em、pt单位转换工具：<a href="http://pxtoem.com/">http://pxtoem.com/</a></p>
+
+
+</li>
+
+<li>rem 中的r你可以理解为root em 是CSS3新增的一个相对单位，这个单位与em有什么区别呢？区别在于使用rem为元素设定字体大小时，仍然是相对大小，但相对的只是HTML根元素</li>
 </ul>
-<h4>4.词根词干</h4>
-<p>词根(Aroot)是一个单词的基础形式，这个形式若在拆分下去就不再是个词了 Aroot is the basic from of a word which cannot be further analyzed without total loss of identity</p>
-<p>词干(stem)可以被定义为任何词缀都能添加的形式。A  Stem can be defined as a form to which affixes of any kind can be added </p>
-<hr>
-<h2>单词积累</h2>
-1.structure 结构 >structurally 结构上<br>
-2.separated 分开<br>
-3.unit 单位/单元<br>
-4.comprises 包括<br>
-5.composition 成分 /结构<br>
-6.derivational 衍生  <br> 
-7.inflectional 曲折 <br></h5>]]></content>
+
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">2.call 、bind 、apply 区别是什么？~</span></h4>
+</div>
+
+<p>首先，要明白这三个函数的存在意义是什么？答案是改变函数执行时的上下文，再具体一点就是改变函数运行时的this指向。有了这个认识，接下来我们来看一下,怎么使用这三个函数。</p>
+
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  let obj &#x3D; &#123;name: &#39;num&#125;;</span><br><span class="line"> function Child(name,id)&#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">this.id &#x3D; id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Child.prototype &#x3D; &#123;</span><br><span class="line">    constructor: Child,</span><br><span class="line">    showName: function()&#123;</span><br><span class="line">      console.log(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">     var child &#x3D; new Child(&#39;count&#39;,&#39;2&#39;);&#x2F;&#x2F;</span><br><span class="line">     child.showName(); &#x2F;&#x2F; 输出count</span><br><span class="line">     child.showName.call(obj);&#x2F;&#x2F;输出num</span><br><span class="line">     child.showName.apply(obj)&#x2F;&#x2F;输出num</span><br><span class="line">	 let a &#x3D; child.showName.bind(obj)</span><br><span class="line">	 a()&#x2F;&#x2F;输出num</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>call、apply与bind的差别</p>
+</li>
+<li><p><strong>call和apply改变了函数的this上下文后便执行该函数,而bind则是返回改变了上下文后的一个函数。</strong></p>
+</li>
+<li><p>call、apply的区别</p>
+</li>
+<li><p>他们俩之间的差别在于参数的区别，call和apply的第一个参数都是要改变上下文的对象，而call从第二个参数开始以参数列表的形式展现，apply则是把除了改变上下文对象的参数放在一个数组里面作为它的第二个参数。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let arr1 &#x3D; [1, 2, 19, 6];</span><br><span class="line">&#x2F;&#x2F;例子：求数组中的最值</span><br><span class="line">console.log(Math.max.call(null, 1,2,19,6)); &#x2F;&#x2F; 19</span><br><span class="line">console.log(Math.max.call(null, arr1)); &#x2F;&#x2F; NaN</span><br><span class="line">console.log(Math.max.apply(null, arr1)); &#x2F;&#x2F;  19 直接可以用arr1传递进去</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="利用call和apply做继承"><a href="#利用call和apply做继承" class="headerlink" title="利用call和apply做继承"></a>利用call和apply做继承</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Animal(name)&#123;      </span><br><span class="line">    this.name &#x3D; name;      </span><br><span class="line">    this.showName &#x3D; function()&#123;      </span><br><span class="line">        console.log(this.name);      </span><br><span class="line">    &#125;      </span><br><span class="line">&#125;      </span><br><span class="line"></span><br><span class="line">function Cat(name)&#123;    </span><br><span class="line">    Animal.call(this, name);    </span><br><span class="line">&#125;      </span><br><span class="line"></span><br><span class="line">var cat &#x3D; new Cat(&quot;胖墩&quot;);     </span><br><span class="line">cat.showName();   &#x2F;&#x2F;胖墩</span><br></pre></td></tr></table></figure>
+<h5 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function Class1(a,b) &#123;</span><br><span class="line">  this.showclass1 &#x3D; function(a,b) &#123;</span><br><span class="line">    console.log(&#96;class1: $&#123;a&#125;,$&#123;b&#125;&#96;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Class2(a,b) &#123;</span><br><span class="line">  this.showclass2 &#x3D; function(a,b) &#123;</span><br><span class="line">    console.log(&#96;class2: $&#123;a&#125;,$&#123;b&#125;&#96;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Class3(a,b,c) &#123;</span><br><span class="line">  Class1.call(this);</span><br><span class="line">  Class2.call(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let arr10 &#x3D; [2,2];</span><br><span class="line">let demo &#x3D; new Class3();</span><br><span class="line">demo.showclass1.call(this,1); &#x2F;&#x2F; class1: 1,undefined</span><br><span class="line">demo.showclass1.call(this,1,2); &#x2F;&#x2F; class1: 1,1</span><br><span class="line">demo.showclass2.apply(this,arr10); &#x2F;&#x2F; class2: 1,2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">3.什么是闭包？</span></h4>
+</div>
+
+<p>先看一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     function aa()&#123;</span><br><span class="line">	var name &#x3D; &quot;123&quot;;</span><br><span class="line">&#125;</span><br><span class="line">aa();</span><br><span class="line">    	console.log(name)&#x2F;&#x2F;空值</span><br></pre></td></tr></table></figure>
+<p>在全局作用域中的变量是可以访问到的，但是如果是函数中声明的变量就困难了。上面的结果是空值也能会提示未定义。</p>
+<p>在函数aa中的声明了name,我在外面访问并访问不到，显示就为空。</p>
+<p>可以通过闭包稍微改动一下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   function aa() &#123;</span><br><span class="line">	var name &#x3D; 15</span><br><span class="line">	   return function bb() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">     var son&#x3D;aa()();</span><br><span class="line">	 console.log(son)&#x2F;&#x2F;15</span><br></pre></td></tr></table></figure>
+<p>在函数aa中我声明了name，紧接着又加了个儿子函数bb，并将bb返回，在bb中又将name返回。bb中使用了aa中的变量，导致aa一直存在。此时bb就是一个闭包，通过bb返回name，让外部可以一直访问name。</p>
+<p>为什么var son  = aa()();这里有两个括号呢。在这里执行完aa，还要执行bb。var son  = aa()  console.log(son)//他会返回一个函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bb() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>此时aa()就是这个值。</p>
+<p>以上足以可以知道什么是闭包了，简单来说，就是全局想要持续访问局部中的变量，但因为函数在执行完后会进行销毁，你就需要给函数设置个儿子，让儿子返回这个变量，然后再将儿子返回，以便达到你可以持续访问这个变量。</p>
+<p>为什么要使用闭包？</p>
+<p>　　因为我们想要持续的使用一个变量，放在全局中会造成全局污染，放在函数中，函数执行完后会销毁，变量也随之销毁，因此需要使用闭包。</p>
+<p>闭包的好处：就是可以持续访问局部中的变量。</p>
+<p>闭包的坏处：会占用更多的内存，不容易被释放。</p>
+<p>可以最后将赋值为空，对闭包进行释放，<strong>否则会造成内存损耗</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   function aa() &#123;</span><br><span class="line">	var name &#x3D; 15</span><br><span class="line">	   return function bb() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">     var son&#x3D;aa();</span><br><span class="line">	 console.log(son)			 </span><br><span class="line">	 son&#x3D;null;</span><br></pre></td></tr></table></figure>
+<p>有哪里不对的地方，可以指出来！</p>
+]]></content>
       <tags>
-        <tag>英语词汇学</tag>
+        <tag>css</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建hexo博客</title>
+    <url>/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
+<hr>
+<h2>前期所需要准备的坏境</h2>
+1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
+<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
+<a id="more"></a>
+<p>如果不会安装，可以参考教程：</p>
+<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
+<p>查看node的版本号
+
+</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
+<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
+<p>查看版本</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
+
+<p>3.前两步已就位>安装hexo</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
+<h6 style="color:red">====================================================================<h6>
+<h2>环境已就位,接下来开始搭建博客</h2>
+<hr>
+<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
+<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
+<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
+<p>4.运行本地服务测试</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
+
+<p>hexo g 说明：生成html文件 </p>
+<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
+<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
+<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
+<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
+<p>已经成功更新上去了，你会了吗？</p>
+<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
+<h6 style="color:red">====================================================================</h6>
+<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
+<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
+<p>下载后的主题都在这里：</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
+
+</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
+<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
+<h6 style="color:red">=============================END====================================</h6>
+
+<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
+</h2></h2></h2></h2></h6></h6>]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>繁花似锦的生活</title>
+    <url>/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<h2>官人,臣妾为你准备了一首音乐</h2>
+理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。<p></p>
+从一个菜鸟逐渐成为大神的故事，从这里开始了
+<br>
+
+
+<img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/a.png" style="zoom:100%;">]]></content>
+      <tags>
+        <tag>WSH</tag>
       </tags>
   </entry>
   <entry>
@@ -538,73 +638,50 @@ v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如
       </tags>
   </entry>
   <entry>
-    <title>搭建hexo博客</title>
-    <url>/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
-<hr>
-<h2>前期所需要准备的坏境</h2>
-1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
-<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
+    <title>英语词汇学(三)</title>
+    <url>/2020/01/10/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%89/</url>
+    <content><![CDATA[<h2 style="color:red;font-weight:blod">第三节：Word formation 词的构造法</h2>
+<ul>
+<li>目录：
+<ul>
+<li>1.词素</li>
+<li>2.词素变体</li>
+<li>3.词素分类</li>
+<li>4.词根词干</li>
+</ul>
+</li>
+</ul>
 <a id="more"></a>
-<p>如果不会安装，可以参考教程：</p>
-<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
-<p>查看node的版本号
-
-</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
-<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
-<p>查看版本</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
-
-<p>3.前两步已就位>安装hexo</p>
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
-<h6 style="color:red">====================================================================<h6>
-<h2>环境已就位,接下来开始搭建博客</h2>
 <hr>
-<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
-<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
-<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
-<p>4.运行本地服务测试</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
-
-<p>hexo g 说明：生成html文件 </p>
-<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
-<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
-<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
-<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
-<p>已经成功更新上去了，你会了吗？</p>
-<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
-<h6 style="color:red">====================================================================</h6>
-<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
-
-</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
-<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
-<p>下载后的主题都在这里：</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
-<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
-
-</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
-<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
-<h6 style="color:red">=============================END====================================</h6>
-
-<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
-</h2></h2></h2></h2></h6></h6>]]></content>
+<h5>1.Morphemes 词素(形位,语素) </h5>
+定义：The minimal meaningful units are known sa morphemes 最小的,有意思的单位叫做词素。
+<h5>2.词素变体 Allomorphs
+<p>词素是抽象单位，由分离的形素morph在话语中实现大多数词素是单个形素：bird、tree、green、sad.单独在句子中起作用的叫mono-morphemic words 单语素词</p>
+<p>一些词素根据在词中的位置不同可以由一个以上的morph（语素形式或词素形式）去现实  some morphems are realized by more than one morph accrording their position in a word </p>
+<h5>3.词素分类</h5>
+<ul>
+<li>1.Free morphemes (自由词素)：彼此之间相互独立的词素叫自由词素 Morphemes which are independent of other orphemes are considered to be free</li>
+<li>2.Bound morphemes (粘附词素):不能单独成立词的词素叫粘附词素 Morphemes which can not occur as separate words are bound 
+<ul>
+<li>1.Bound root 粘附词根 ：是附加形式，只能和其他词素组合在一起去构成一个单词</li>
+<li>2.Affix 词缀（前/后）：词缀是附属在单词上或者单词元素上以修改词语意义和功能的结构。</li>
+</ul>
+</li>
+</ul>
+<h4>4.词根词干</h4>
+<p>词根(Aroot)是一个单词的基础形式，这个形式若在拆分下去就不再是个词了 Aroot is the basic from of a word which cannot be further analyzed without total loss of identity</p>
+<p>词干(stem)可以被定义为任何词缀都能添加的形式。A  Stem can be defined as a form to which affixes of any kind can be added </p>
+<hr>
+<h2>单词积累</h2>
+1.structure 结构 >structurally 结构上<br>
+2.separated 分开<br>
+3.unit 单位/单元<br>
+4.comprises 包括<br>
+5.composition 成分 /结构<br>
+6.derivational 衍生  <br> 
+7.inflectional 曲折 <br></h5>]]></content>
       <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
+        <tag>英语词汇学</tag>
       </tags>
   </entry>
 </search>

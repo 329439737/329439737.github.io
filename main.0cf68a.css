@@ -10,4 +10,34 @@ ottom:1px solid #fff;/* background:#fff; */background: rgba(255,255,255,.5);tran
 a {
     cursor:url('https://oss.yansheng.xyz/ico/favicon-2019110906554413.ico'), default;
 }
+.btn-copy {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    background-color: #515151;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #d5d5d5;
+    -webkit-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    padding: 2px 6px;
+}
+
+.btn-copy span {
+    margin-left: 5px
+}
+
+.code-wrapper .btn-copy:hover {
+    color: #fff;
+}
 
