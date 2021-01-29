@@ -33,7 +33,7 @@
 <meta property="og:description" content="每天一个小知识 前端小课堂开课了~  今日课程：1.单位(px、em&#x2F;rem) 2.call、bind、apply区别 3.什么是闭包？">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-23T04:06:09.068Z">
-<meta property="article:modified_time" content="2021-01-23T09:27:44.587Z">
+<meta property="article:modified_time" content="2021-01-28T08:42:08.595Z">
 <meta property="article:author" content="王贺贺">
 <meta property="article:tag" content="css">
 <meta property="article:tag" content="前端">
@@ -121,7 +121,7 @@
 						</ul>
 					</nav>
 					<nav>
-     <div style="color:red">总文章数：12</div>
+     <div style="color:red">总文章数：13</div>
 </nav>
 					<nav class="header-smart-menu">
 						
@@ -359,8 +359,7 @@
 <p>首先，要明白这三个函数的存在意义是什么？答案是改变函数执行时的上下文，再具体一点就是改变函数运行时的this指向。有了这个认识，接下来我们来看一下,怎么使用这三个函数。</p>
 
 
-
-
+<p>​      </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  let obj &#x3D; &#123;name: &#39;num&#125;;</span><br><span class="line"> function Child(name,id)&#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">this.id &#x3D; id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Child.prototype &#x3D; &#123;</span><br><span class="line">    constructor: Child,</span><br><span class="line">    showName: function()&#123;</span><br><span class="line">      console.log(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">     var child &#x3D; new Child(&#39;count&#39;,&#39;2&#39;);&#x2F;&#x2F;</span><br><span class="line">     child.showName(); &#x2F;&#x2F; 输出count</span><br><span class="line">     child.showName.call(obj);&#x2F;&#x2F;输出num</span><br><span class="line">     child.showName.apply(obj)&#x2F;&#x2F;输出num</span><br><span class="line">	 let a &#x3D; child.showName.bind(obj)</span><br><span class="line">	 a()&#x2F;&#x2F;输出num</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>call、apply与bind的差别</p>
@@ -514,6 +513,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/01/28/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86-02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前端小知识-02
+        
+      </div>
+    </a>
   
   
     <a href="/2021/01/18/MYSQL-1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -755,11 +763,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color2">vue.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,15 +775,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,6 +788,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">开心快乐每一天</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
