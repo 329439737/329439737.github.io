@@ -29,6 +29,47 @@
       </tags>
   </entry>
   <entry>
+    <title>div的对齐方式</title>
+    <url>/2021/03/18/div%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h1>关于DIV的几种对齐方式</h1>
+<p>常见问题：一个盒子在另一个盒子里面咋么，怎么让他水平居中</p>
+<a id="more"></a>
+<ul>
+<li>
+<h1 style="color:red">
+1.Flex 方法
+</h1>
+
+<p>将父元素设设置为弹性布局：display: flex</p>
+<p>再设置属性：justify-content: center（justify-content 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。）</p>
+<p>再设置属性：align-items: center;（align-items 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display: flex;</span><br><span class="line">justify-content: center;</span><br><span class="line">align-items: center;</span><br><span class="line">text-align: center;</span><br></pre></td></tr></table></figure>
+<img src="/2021/03/18/div%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F/bg.png" style="zoom:100%;">
+</li>
+<hr>
+<li>
+<h1 style="color:red">2.position定位 方法</h1>
+<p>要先采用绝对定位position：absolute，若改为相对定位position：relative；则只会左右居中，不会上下居中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> .test&#123;</span><br><span class="line">  background-color: red;</span><br><span class="line">  width:100px;</span><br><span class="line">  height:100px;</span><br><span class="line">  position:relative;</span><br><span class="line">  margin:200px auto;</span><br><span class="line"> &#125;</span><br><span class="line"> .test1&#123;</span><br><span class="line">  height:50px;</span><br><span class="line">  width:50px;</span><br><span class="line">  background-color:pink;</span><br><span class="line">  position:absolute;</span><br><span class="line">  text-align: center;</span><br><span class="line">  line-height:50px;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">  margin: auto;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2021/03/18/div%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F/bg2.png" style="zoom:100%;">
+</li>
+<hr>
+<li>
+<h1 style="color:red">
+3.position+transform 方法
+
+</h1>
+<p>.定位+transform（不需要知道子盒子的宽高）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> .test&#123;</span><br><span class="line">  background-color:red;</span><br><span class="line">  width:100px;</span><br><span class="line">  height:100px;</span><br><span class="line">  position:relative;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"> .test1&#123;</span><br><span class="line">  height:50px;</span><br><span class="line">  width:50px;</span><br><span class="line">  background-color:pink;</span><br><span class="line">  position:absolute;</span><br><span class="line">  top:50%;</span><br><span class="line">  left:50%;</span><br><span class="line">  transform: translate(-50% ,-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2021/03/18/div%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F/bg2.png" style="zoom:100%;">
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>联通流量卡</title>
     <url>/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/</url>
     <content><![CDATA[  <h4>可爱的人终会相遇--欢迎你</h4>
