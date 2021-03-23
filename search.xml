@@ -29,18 +29,49 @@
       </tags>
   </entry>
   <entry>
-    <title>We life</title>
+    <title>青春不散场</title>
     <url>/2021/03/23/We-life/</url>
-    <content><![CDATA[<div>
-<a style="padding-right:20p"><img src="/2021/03/23/We-life/1.jpg" style="zoom:19%;border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/2.jpg" style="zoom:25%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/3.jpg" style="zoom:25%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/4.jpg" style="zoom:40%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/5.jpg" style="zoom:40%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/7.jpg" style="zoom:26%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/6.jpg" style="zoom:47%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/8.jpg" style="zoom:17%; border: 1px pink solid;"></a>  
-<a style="padding-right:20px"><img src="/2021/03/23/We-life/9.jpg" style="zoom:25%;border: 1px pink solid;"></a>  
+    <content><![CDATA[<h3>Stand higher and see farther</h3>
+<a id="more"></a>
+<p>2021牛气冲天，心想事成</p>
+<div style=" display: flex; align-items: center;  justify-content: center;">
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+    <a style="padding-right:20p"><img src="/2021/03/23/We-life/1.jpg" style="zoom:100%;border: 1px pink solid;"></a>  
+    <h4>中单法王
+  </h4></div>
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+    <a style="padding-right:20px"><img src="/2021/03/23/We-life/2.jpg" style="zoom:100%; border: 1px pink solid;"></a>  
+      <h4>最强辅助
+  </h4></div>
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+    <a style="padding-right:20px"><img src="/2021/03/23/We-life/3.jpg" style="zoom:100%; border: 1px pink solid;"></a>  
+       <h4>上单最强
+  </h4></div>
+   <div style="width:400px;height:400px; margin: 0px 10px;">
+   <a style="padding-right:20px"><img src="/2021/03/23/We-life/4.jpg" style="zoom:100%; border: 1px pink solid;"></a> 
+    <h4>中单法王 
+  </h4></div>
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+   <a style="padding-right:20px"><img src="/2021/03/23/We-life/5.jpg" style="zoom:100%; border: 1px pink solid;"></a> 
+    <h4>中单法王 
+  </h4></div>
+   <div style="width:400px;height:400px; margin: 0px 10px;">
+   <a style="padding-right:20px"><img src="/2021/03/23/We-life/7.jpg" style="zoom:100%; border: 1px pink solid;"></a>
+    <h4>中单法王  
+  </h4></div>
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+   <a style="padding-right:20px"><img src="/2021/03/23/We-life/6.jpg" style="zoom:100%; border: 1px pink solid;"></a>  
+    <h4>中单法王
+  </h4></div>
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+   <a style="padding-right:20px"><img src="/2021/03/23/We-life/9.jpg" style="zoom:100%;border: 1px pink solid;"></a> 
+    <h4>中单法王 
+  </h4></div>
+  <div style="width:400px;height:400px; margin: 0px 10px;">
+   <a style="padding-right:20px"><img src="/2021/03/23/We-life/8.jpg" style="zoom:100%;border: 1px pink solid;"></a> 
+    <h4>中单法王 
+  </h4></div>
+
 </div>]]></content>
       <tags>
         <tag>上外</tag>
@@ -156,6 +187,80 @@ git checkout (分支名称)   切换分支名称 </li>
       </tags>
   </entry>
   <entry>
+    <title>前端小知识-02</title>
+    <url>/2021/03/16/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86-02/</url>
+    <content><![CDATA[<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> 
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;">每天一个小知识<span> </span><span style="color:pink">前端小课堂开课了~</span></h4>
+</div>
+<p>今日课程：1.===和==的区别 2.Post和Get区别 3.前端的三层构成</p><a id="more"></a>
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">1.js中的三等（===）运算和双等（==）运算区别？~</span></h4>
+</div>
+
+<p>认识：===和==都可以用来进行判断，===（严格比对&gt;相同类型相同值为true）==(先进行类型转换，在对比值，相同为true。则false).</p>
+<p>===：这个比较简单。下面的规则用来判断两个值是否===相等：</p>
+<p>1、如果类型不同，就[不相等]</p>
+<p>2、如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。(判断一个值是否是NaN，只能用isNaN()来判断)</p>
+<p>3、如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。</p>
+<p>4、如果两个值都是true，或者都是false，那么[相等]。</p>
+<p>5、如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。</p>
+<p>6、如果两个值都是null，或者都是undefined，那么[相等]。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NaN &#x3D;&#x3D; 1  &#x2F;&#x2F;false</span><br><span class="line">NaN &#x3D;&#x3D; NaN &#x2F;&#x2F;false</span><br><span class="line">null &#x3D;&#x3D; null &#x2F;&#x2F;true</span><br><span class="line">undefined &#x3D;&#x3D; undefined &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+<p>  再说 ==，根据以下规则：</p>
+<p>1、如果两个值类型相同，进行 === 比较。</p>
+<p>2、如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较：</p>
+<p>a、如果一个是null、一个是undefined，那么[相等]。</p>
+<p>b、如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。</p>
+<p>c、如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。</p>
+<p>d、如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。 js核心内置类，会尝试valueOf先于toString；例外的是Date，Date利用的是toString转换。非js核心的对象，令说(比较麻 烦，我也不大懂)</p>
+<p>e、任何其他组合，都[不相等]。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">false &#x3D;&#x3D; &#39;0&#39;  先把false装换为0, 0&#x3D;&#x3D;&#39;0&#39; ,在把&#39;0&#39;转化成0 , 0&#x3D;&#x3D;0 &#x2F;&#x2F;返回true	</span><br><span class="line">true &#x3D;&#x3D; &#39;1&#39;  先把true装换为1, 1&#x3D;&#x3D;&#39;1&#39; ,在把&#39;1&#39;转化成1 , 1&#x3D;&#x3D;1 &#x2F;&#x2F;返回true	</span><br><span class="line">var a &#x3D; 2, var b &#x3D;&#39;2&#39;</span><br><span class="line">a&#x3D;&#x3D;b &#x2F;&#x2F;返回 true   &#x2F;&#x2F;等值不等类型</span><br><span class="line">a&#x3D;&#x3D;&#x3D;b &#x2F;&#x2F;返回false  &#x2F;&#x2F;不同类型一定是false</span><br></pre></td></tr></table></figure>
+<p>简而言之就是 “==” 只要求值相等; “===” 要求值和类型都相等 ^_^</p>
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">2.Post和Get区别~</span></h4>
+</div>
+
+<p>最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。</p>
+<p>你轻轻松松的给出了一个“标准答案”：</p>
+<ul>
+<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
+</ul>
+<ul>
+<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
+</ul>
+<ul>
+<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
+</ul>
+<ul>
+<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
+</ul>
+<ul>
+<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
+</ul>
+<ul>
+<li>GET请求在URL中传送的参数是有长度限制的，而POST么有。</li>
+</ul>
+<ul>
+<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
+</ul>
+<ul>
+<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
+</ul>
+<ul>
+<li>GET参数通过URL传递，POST放在Request body中。s</li>
+</ul>
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">3.前端页面有哪三层构成，分别是什么？作用是什么？span></span></h4>
+</div>
+
+<p><strong>网页分成三个层次，即：结构层、表示层、行为层。</strong><br><strong>网页的结构层：由HTML 或XHTML 之类的标记语言负责创建，即HTML的语义化。，说白了就是一些标签</strong><br><strong>网页的表示层：说白了就是CSS</strong><br>网页的行为层：说白了就是Javascript 语言和DOM 主宰的领域</p>
+]]></content>
+      <tags>
+        <tag>css</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端小知识-01</title>
     <url>/2021/03/16/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86-01/</url>
     <content><![CDATA[<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> 
@@ -227,80 +332,6 @@ git checkout (分支名称)   切换分支名称 </li>
 <p>可以最后将赋值为空，对闭包进行释放，<strong>否则会造成内存损耗</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   function aa() &#123;</span><br><span class="line">	var name &#x3D; 15</span><br><span class="line">	   return function bb() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">     var son&#x3D;aa();</span><br><span class="line">	 console.log(son)			 </span><br><span class="line">	 son&#x3D;null;</span><br></pre></td></tr></table></figure>
 <p>有哪里不对的地方，可以指出来！</p>
-]]></content>
-      <tags>
-        <tag>css</tag>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端小知识-02</title>
-    <url>/2021/03/16/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86-02/</url>
-    <content><![CDATA[<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> 
-<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;">每天一个小知识<span> </span><span style="color:pink">前端小课堂开课了~</span></h4>
-</div>
-<p>今日课程：1.===和==的区别 2.Post和Get区别 3.前端的三层构成</p><a id="more"></a>
-<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
-<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">1.js中的三等（===）运算和双等（==）运算区别？~</span></h4>
-</div>
-
-<p>认识：===和==都可以用来进行判断，===（严格比对&gt;相同类型相同值为true）==(先进行类型转换，在对比值，相同为true。则false).</p>
-<p>===：这个比较简单。下面的规则用来判断两个值是否===相等：</p>
-<p>1、如果类型不同，就[不相等]</p>
-<p>2、如果两个都是数值，并且是同一个值，那么[相等]；(！例外)的是，如果其中至少一个是NaN，那么[不相等]。(判断一个值是否是NaN，只能用isNaN()来判断)</p>
-<p>3、如果两个都是字符串，每个位置的字符都一样，那么[相等]；否则[不相等]。</p>
-<p>4、如果两个值都是true，或者都是false，那么[相等]。</p>
-<p>5、如果两个值都引用同一个对象或函数，那么[相等]；否则[不相等]。</p>
-<p>6、如果两个值都是null，或者都是undefined，那么[相等]。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NaN &#x3D;&#x3D; 1  &#x2F;&#x2F;false</span><br><span class="line">NaN &#x3D;&#x3D; NaN &#x2F;&#x2F;false</span><br><span class="line">null &#x3D;&#x3D; null &#x2F;&#x2F;true</span><br><span class="line">undefined &#x3D;&#x3D; undefined &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
-<p>  再说 ==，根据以下规则：</p>
-<p>1、如果两个值类型相同，进行 === 比较。</p>
-<p>2、如果两个值类型不同，他们可能相等。根据下面规则进行类型转换再比较：</p>
-<p>a、如果一个是null、一个是undefined，那么[相等]。</p>
-<p>b、如果一个是字符串，一个是数值，把字符串转换成数值再进行比较。</p>
-<p>c、如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。</p>
-<p>d、如果一个是对象，另一个是数值或字符串，把对象转换成基础类型的值再比较。对象转换成基础类型，利用它的toString或者valueOf方法。 js核心内置类，会尝试valueOf先于toString；例外的是Date，Date利用的是toString转换。非js核心的对象，令说(比较麻 烦，我也不大懂)</p>
-<p>e、任何其他组合，都[不相等]。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">false &#x3D;&#x3D; &#39;0&#39;  先把false装换为0, 0&#x3D;&#x3D;&#39;0&#39; ,在把&#39;0&#39;转化成0 , 0&#x3D;&#x3D;0 &#x2F;&#x2F;返回true	</span><br><span class="line">true &#x3D;&#x3D; &#39;1&#39;  先把true装换为1, 1&#x3D;&#x3D;&#39;1&#39; ,在把&#39;1&#39;转化成1 , 1&#x3D;&#x3D;1 &#x2F;&#x2F;返回true	</span><br><span class="line">var a &#x3D; 2, var b &#x3D;&#39;2&#39;</span><br><span class="line">a&#x3D;&#x3D;b &#x2F;&#x2F;返回 true   &#x2F;&#x2F;等值不等类型</span><br><span class="line">a&#x3D;&#x3D;&#x3D;b &#x2F;&#x2F;返回false  &#x2F;&#x2F;不同类型一定是false</span><br></pre></td></tr></table></figure>
-<p>简而言之就是 “==” 只要求值相等; “===” 要求值和类型都相等 ^_^</p>
-<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
-<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">2.Post和Get区别~</span></h4>
-</div>
-
-<p>最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。</p>
-<p>你轻轻松松的给出了一个“标准答案”：</p>
-<ul>
-<li>GET在浏览器回退时是无害的，而POST会再次提交请求。</li>
-</ul>
-<ul>
-<li>GET产生的URL地址可以被Bookmark，而POST不可以。</li>
-</ul>
-<ul>
-<li>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</li>
-</ul>
-<ul>
-<li>GET请求只能进行url编码，而POST支持多种编码方式。</li>
-</ul>
-<ul>
-<li>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</li>
-</ul>
-<ul>
-<li>GET请求在URL中传送的参数是有长度限制的，而POST么有。</li>
-</ul>
-<ul>
-<li>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</li>
-</ul>
-<ul>
-<li>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</li>
-</ul>
-<ul>
-<li>GET参数通过URL传递，POST放在Request body中。s</li>
-</ul>
-<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
-<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">3.前端页面有哪三层构成，分别是什么？作用是什么？span></span></h4>
-</div>
-
-<p><strong>网页分成三个层次，即：结构层、表示层、行为层。</strong><br><strong>网页的结构层：由HTML 或XHTML 之类的标记语言负责创建，即HTML的语义化。，说白了就是一些标签</strong><br><strong>网页的表示层：说白了就是CSS</strong><br>网页的行为层：说白了就是Javascript 语言和DOM 主宰的领域</p>
 ]]></content>
       <tags>
         <tag>css</tag>
