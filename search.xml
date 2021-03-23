@@ -29,6 +29,24 @@
       </tags>
   </entry>
   <entry>
+    <title>We life</title>
+    <url>/2021/03/23/We-life/</url>
+    <content><![CDATA[<div>
+<a style="padding-right:20p"><img src="/2021/03/23/We-life/1.jpg" style="zoom:19%;border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/2.jpg" style="zoom:25%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/3.jpg" style="zoom:25%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/4.jpg" style="zoom:40%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/5.jpg" style="zoom:40%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/7.jpg" style="zoom:26%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/6.jpg" style="zoom:47%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/8.jpg" style="zoom:17%; border: 1px pink solid;"></a>  
+<a style="padding-right:20px"><img src="/2021/03/23/We-life/9.jpg" style="zoom:25%;border: 1px pink solid;"></a>  
+</div>]]></content>
+      <tags>
+        <tag>上外</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Happy</title>
     <url>/2021/03/20/Happy/</url>
     <content><![CDATA[<div style="margin:10px 10px ">
@@ -604,8 +622,8 @@ v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如
 
 ]]></content>
       <tags>
-        <tag>css</tag>
         <tag>vue.js</tag>
+        <tag>css</tag>
         <tag>前端</tag>
       </tags>
   </entry>
@@ -662,8 +680,8 @@ v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如
 
 </ul>]]></content>
       <tags>
-        <tag>css</tag>
         <tag>vue.js</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
