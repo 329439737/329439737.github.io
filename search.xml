@@ -179,27 +179,30 @@
   <li>备份：git stash save 'xaaaa'  </li>
   <li>更新：git pull origin master  </li>
   <li>删除备份git stash pop </li>
-
   </ul>
  </li>
 <li>3. 提交代码
+
 <ul>
   <li>第一步：备份：git stash save 'xaaaa'   </li>
   <li>第二步：更新：git pull origin master   </li>
   <li>第三步：删除备份git stash pop  </li>
-   <li>第四步：git status ： 查看代码修改情况   </li>
-  <li>第五步：git add src : 代码提交到暂存区。（提交代码到暂存的地方）    </li>
-  <li>第六步：git commit -m 'xxx' : 暂存区代码提交到本地git仓库（一定要添加备注）。  </li>
-   <li>第七步：git push origin master  : 本地git仓库代码提交到远程仓库，（例子是提交到主分支，如果提交到分支 git push 分支名称）   </li>
-  <li>第八步： 合并分支 
-   git merge （需要被合并的分支）   </li>
-  <li> 第九步
-git checkout (分支名称)   切换分支名称 </li>
+  <li>第四步：git status ： 查看代码修改情况   </li>
+  <li>提交代码三部曲（1）>>：<a>git add .</a> : 代码提交到暂存区。（提交代码到暂存的地方）    </li>
+  <li>提交代码三部曲（2）>><a>git commit -m '备注' </a> : 暂存区代码提交到本地git仓库（一定要添加备注）。  </li>
+  <li>提交代码三部曲（3）>><a>git push origin master</a>   : 本地git仓库代码提交到远程仓库，（例子是提交到主分支，如果提交到分支 git push 分支名称）   </li>
+  <li> 合并分支操作>><a> git merge （需要被合并的分支）</a> </li>
+  <li> 切换分支名称>> <a> git checkout (分支名称) </a> </li>
+  <li> 删除git在本地的无效远程分支>><a>git remote prune origin</a></li>
+  <li> 删除本地分支>><a>git branch -D (分支名称)  </a></li>
+ </ul>
 
-  </ul>
- </li>
+</li></ul>
 
-</ul>
+
+<h2>友情链接</h2>
+ 1.<a href="https://www.jianshu.com/p/914a7f093b9d">Git常用命令及在Vscode中的使用</a>
+
 ]]></content>
       <tags>
         <tag>git</tag>
