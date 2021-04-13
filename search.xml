@@ -1,31 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>繁花似锦的生活</title>
-    <url>/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<div style="width:100%;height:60px;background-color:#46679D;border-radius:10px;display:flex;">
-    <h2 style="line-height:60px;color:red; margin: 0 auto;">简简单单的幸福</h2>
-</div>
-<br>
-理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。<p></p>
-<br>
-<div style="display:flex">
-<a href="https://weibo.com/hehedawang" style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/weibo.gif" style="zoom:25%;"></a>  
-<a href="https://author.baidu.com/home?context=%7B%22app_id%22%3A%221630686982573806%22%7D&wfr=bjh" style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/baijia.gif" style="zoom:25%;"></a>
-<a href="https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=3302&adfrom=qqshare&x5PreFetch=1&accountId=MTAwMTAwNjU0NjkxOA%3D%3D&adtag=qqshare&t=1608168284997" style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/qiehao.gif" style="zoom:25%;"></a>  
-<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/wxggh.gif" style="zoom:25%;"></a>  
-</div>
+    <title>MYSQL-解决跨天(1天)统计正确时长</title>
+    <url>/2021/01/18/MYSQL-1/</url>
+    <content><![CDATA[<h2>如题：思路>使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</h2>
 
-<div style="display:flex;margin-top:20px">
-<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t1.gif" style="zoom:25%;"></a>  
-<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t2.gif" style="zoom:25%;"></a>  
-<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t3.gif" style="zoom:25%;"></a>  
-<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t4.gif" style="zoom:25%;"></a>  
-</div>
-
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br><span class="line">CREATE DEFINER&#x3D;&#96;hehe&#96;@&#96;%&#96; PROCEDURE &#96;时间格式化&#96;(IN &#96;tstart&#96; varchar(200),IN &#96;tend&#96; varchar(200),IN &#96;faly&#96; varchar(200),OUT &#96;num&#96; varchar(200))</span><br><span class="line">begin</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">#解决跨天统计时长</span><br><span class="line">if faly &#x3D; &#39;否&#39; then</span><br><span class="line">  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) &#x2F; 3600 into num;</span><br><span class="line">  if substring(num,1,1)&#x3D; &#39;-&#39; then </span><br><span class="line">	   select TRIM(replace(num,&#39;-&#39;,&#39; &#39;)) into num;</span><br><span class="line">	end if;</span><br><span class="line">end if;</span><br><span class="line">if faly &#x3D; &#39;是&#39; then</span><br><span class="line">  if tstart &#x3D;  tend then</span><br><span class="line">	 select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) + 24 into num;</span><br><span class="line">	end if;</span><br><span class="line">  if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &lt; SUBSTRING_INDEX(tend,&#39;:&#39;,1) then</span><br><span class="line">	  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600 into num ;</span><br><span class="line">		select 24 - num into num;</span><br><span class="line">	end if;</span><br><span class="line">	if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &gt; SUBSTRING_INDEX(tend,&#39;:&#39;,1) then</span><br><span class="line">	   if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &lt;12 and SUBSTRING_INDEX(tend,&#39;:&#39;,1) &lt;12 then</span><br><span class="line">		    select  (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600 into num;</span><br><span class="line">		    if substring(num,1,1)&#x3D; &#39;-&#39; then </span><br><span class="line">	      select  24 - TRIM(replace(num,&#39;-&#39;,&#39; &#39;))  into num ;</span><br><span class="line">	     end if;</span><br><span class="line">		   select  24 - (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600  into num;</span><br><span class="line">	    end if;</span><br><span class="line">	    end if;</span><br><span class="line">	   if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &gt;12 and SUBSTRING_INDEX(tend,&#39;:&#39;,1) &lt; 12 then</span><br><span class="line">		  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))  into num;</span><br><span class="line">		 end if;</span><br><span class="line">end if;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>WSH</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Happy</title>
+    <url>/2021/03/20/Happy/</url>
+    <content><![CDATA[<div style="margin:10px 10px ">
+</div>]]></content>
+      <tags>
+        <tag>happy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VUE-全家桶</title>
+    <url>/2021/01/18/VUE-%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
+    <content><![CDATA[<h2>一、简介：山穷水尽疑无路，柳暗花明又一村</h2>
+<p>本文介绍Vue全家桶：Vue+Vue-router+Vuex+axios。</p>
+<a id="more"></a>
+<p>vue全家桶：vue + vuex (状态管理) + vue-router (路由) + vue-resource +axios +UI框架（iview、vant、elementUI等等）</p>
+<h2>二、VUE</h2>
+<p>Vue有著名的全家桶系列，包含了vue-router（http://router.vuejs.org），
+vuex（http://vuex.vuejs.org），
+ vue-resource（https://github.com/pagekit/vue-resource）
+ 。再加上构建工具vue-cli，sass样式，就是一个完整的vue项目的核心构成</p>
+
+<p>1.引入Vue</p>
+<ul>
+<li>开发环境：< script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" ></li>
+<li>生产环境：< script src="https://cdn.jsdelivr.net/npm/vue"></li>
+</ul>
+<p>环境引入完毕，接下来就可以进行实例了：官方文档说的很清楚了><a href="https://cn.vuejs.org/v2/guide/">官方文档</a></p>
+
+<p>2.Vue-router</p>
+<p>1.干什么？</p>
+<ul>
+<li> 嵌套的路由/视图表</li>
+<li> 模块化的、基于组件的路由配置</li>
+<li> 路由参数、查询、通配符</li>
+<li> 基于 Vue.js 过渡系统的视图过渡效果</li>
+<li> 嵌细粒度的导航控制</li>
+<li> 带有自动激活的 CSS class 的链接</li>
+<li> HTML5 历史模式或 hash 模式，在 IE9 中自动降级</li>
+<li> 自定义的滚动条行为</li>
+</ul>
+<p>2.进入<a href="https://router.vuejs.org/zh/">官方文档</a>查看更多...</p>
+3.Vuex
+<p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，适合开发大型单页应用。</p>
+<p>具体见<a href="https://vuex.vuejs.org/zh/">Vuex官方教程</a></p>
+4.axios
+<p>axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它可以帮你：</p>
+<ul>
+<li>从浏览器中创建 XMLHttpRequest</li>
+<li>从 node.js 发出 http 请求</li>
+<li>支持 Promise API</li>
+<li>转换请求和响应数据</li>
+<li>自动转换JSON数据</li>
+</ul>
+5.其他与之配合的框架：elementUI
+<p>elementUI 是基于 Vue 2.0 桌面端中后台组件库。</p>]]></content>
+      <tags>
+        <tag>vue.js</tag>
       </tags>
   </entry>
   <entry>
@@ -97,15 +140,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Happy</title>
-    <url>/2021/03/20/Happy/</url>
-    <content><![CDATA[<div style="margin:10px 10px ">
-</div>]]></content>
-      <tags>
-        <tag>happy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>div的对齐方式</title>
     <url>/2021/03/18/div%E7%9A%84%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<h1>关于DIV的几种对齐方式</h1>
@@ -144,19 +178,6 @@
 ]]></content>
       <tags>
         <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>联通流量卡</title>
-    <url>/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/</url>
-    <content><![CDATA[  <h4>可爱的人终会相遇--欢迎你</h4>
-  <p style="color:red">简介：联通流量卡，上网专用卡。详情看下图</p>
-  <img src="/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/a1.png" style="zoom:50%;">
-  <img src="/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/a2.jpg" style="zoom:30%;">
-  <p>备注：需要实名，介意勿扰</p>
-  <h1>管理员VX：wang_329439737</h1>]]></content>
-      <tags>
-        <tag>流量卡</tag>
       </tags>
   </entry>
   <entry>
@@ -203,9 +224,325 @@
 <h2>友情链接</h2>
  1.<a href="https://www.jianshu.com/p/914a7f093b9d">Git常用命令及在Vscode中的使用</a>
 
+<p> 2.<a href=" https://www.cnblogs.com/ydxblog/p/7988317.html">Git常用命令及在Vscode中的使用</a></p>
 ]]></content>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>相册墙</title>
+    <url>/2021/01/06/img/</url>
+    <content><![CDATA[<hr>
+<a id="more"></a>
+<div style="float:left">
+<img src="/2021/01/06/img/a1.png">
+<hr>
+<img src="/2021/01/06/img/a2.png">
+<hr>
+<img src="/2021/01/06/img/a3.png">
+</div>
+
+]]></content>
+      <tags>
+        <tag>相册</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue-03</title>
+    <url>/2021/02/06/vue-03/</url>
+    <content><![CDATA[<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> 
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;">每天一个小知识<span> </span><span style="color:pink">vue小课堂开课了~</span></h4>
+</div>
+
+<p>今日课程：vuex</p><a id="more"></a>
+<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
+<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">1.认识vue的vuex的状态管理~</span></h4>
+</div>
+
+<p>前言：Vue的vuex和React的Redux 都统称为同一状态管理，个人的理解是全局状态管理更合适；简单的理解就是你在state中定义了一个数据之后，你可以在所在项目中的任何一个组件里进行获取、进行修改，并且你的修改可以得到全局的响应变更。下面咱们一步一步地剖析下vuex的使用</p>
+<p><strong>Vuex有五个核心概念：<code>state</code></strong>, <code>getters</code><strong>,</strong> <code>mutations</code><strong>,</strong> <code>actions</code><strong>,</strong> <code>modules</code>。</p>
+<ol>
+<li><p>state：vuex的基本数据，用来存储变量</p>
+</li>
+<li><p>geeter：从基本数据(state)派生的数据，相当于state的计算属性</p>
+</li>
+<li><p>mutation：提交更新数据的方法，必须是同步的(如果需要异步使用action)。每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数，提交载荷作为第二个参数。</p>
+</li>
+<li><p>action：和mutation的功能大致相同，不同之处在于 ==》1. Action 提交的是 mutation，而不是直接变更状态。 2. Action 可以包含任意异步操作。</p>
+</li>
+<li><p>modules：模块化vuex，可以让每一个模块拥有自己的state、mutation、action、getters,使得结构非常清晰，方便管理。</p>
+</li>
+</ol>
+<p><strong>Vuex的用法：</strong>先建一个文件夹store(用来放js文件)，在其下建一个index.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import vue from &quot;vue&quot;  &#x2F;&#x2F;引用vue</span><br><span class="line">import Vuex from &quot;vuex&quot;;  &#x2F;&#x2F;引用vuex</span><br><span class="line">vue.use(Vuex);  &#x2F;&#x2F;很重要，使用vuex</span><br><span class="line"></span><br><span class="line">const state &#x3D; &#123;</span><br><span class="line">    name: &#39;王子&#39;,  &#x2F;&#x2F;在state初始化全局变量</span><br><span class="line">    age: 110,</span><br><span class="line">    time:&#39;&#39;</span><br><span class="line">   .........（可以很多）</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const store  &#x3D; new Vuex.Store(&#123;</span><br><span class="line">  state   &#x2F;&#x2F;将上面写的state扔进Vuex.Store，才能被引用到</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export default state; &#x2F;&#x2F;导出</span><br></pre></td></tr></table></figure>
+<p>还有很重要的一步，需要在main.js里面引用import store from “./store”</p>
+<img src="/2021/02/06/vue-03/a.png" style="zoom:80%;">
+
+<p>这时候就在用this.$store.state.name获取到之前的name值了。</p>
+<p><strong>那什么是<code>Getters</code>?它有什么作用？</strong></p>
+<p><code>Getters</code> 我们可以理解为store仓库的一个计算属性，它的作用主要是用来派生出一些新的状态。比如我们要把state状态的数据进行一次映射或者筛选，再把这个结果重新计算并提供给组件使用。举个简单例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const getters &#x3D; &#123;</span><br><span class="line">    isShow(state) &#123;  &#x2F;&#x2F;写个显示方法，当使用这个方法的时候就会返回state.name的值</span><br><span class="line">        return state.name</span><br><span class="line">    &#125;,</span><br><span class="line">    ishide(state) &#123;</span><br><span class="line">        return state.age  &#x2F;&#x2F;写个显示方法，当使用这个方法的时候就会返回state.age的值</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>数据展示</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;&#123; isname &#125;&#125; &#x2F;&#x2F;王子</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; mapGetters &#125; from &quot;vuex&quot;; &#x2F;&#x2F;getters辅助方法</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    ...mapGetters([&quot;isname&quot;]), &#x2F;&#x2F;ES6语法</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>mutation：</p>
+<p><strong>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。</strong></p>
+<p><strong>接下来我们还是用上一篇文章在state中存放的count为例，来看利用Mutation修改state的count属性。</strong></p>
+<p>利用commit来触发mutation函数</p>
+<p><strong>在mutation函数中添加count的add函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const mutations &#x3D; &#123;</span><br><span class="line">    addNum(state) &#123;</span><br><span class="line">        state.num++</span><br><span class="line">    &#125;,</span><br><span class="line">    add(state) &#123;</span><br><span class="line">        state.count +&#x3D; 2</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p><strong>在组件中使用mutation进行实现叠加器</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#39;add&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Mutation的载荷（payload）"><a href="#Mutation的载荷（payload）" class="headerlink" title="Mutation的载荷（payload）"></a>Mutation的载荷（payload）</h3><p>你可以向store.commit传入额外的参数，即mutation的载荷（payload）：我们还是以上面累加器的例子来实现mutation函数的传参，来动态定义累加的数量。</p>
+<p><strong>在mutation.js中修改add方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const mutations &#x3D; &#123;</span><br><span class="line">  addNum (state) &#123;</span><br><span class="line">    state.num++</span><br><span class="line">  &#125;,</span><br><span class="line">  add (state, n) &#123;</span><br><span class="line">    state.count +&#x3D; n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>在组件中store.commit如何传参</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#39;add&#39;, 5)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>在mutation传参（载荷）可以传递一个参数也可以传递一个对象。让我们修改下上面的例子</strong></p>
+<p><strong>mutation.js文件中修改如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const mutations &#x3D; &#123;</span><br><span class="line">  addNum (state) &#123;</span><br><span class="line">    state.num++</span><br><span class="line">  &#125;,</span><br><span class="line">  add (state, payload) &#123;</span><br><span class="line">    state.count +&#x3D; payload.amount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>组件中修改如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#39;add&#39;, &#123; amount: 10 &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="在store-commit中可以进行对象风格的提交"><a href="#在store-commit中可以进行对象风格的提交" class="headerlink" title="在store.commit中可以进行对象风格的提交"></a>在store.commit中可以进行对象风格的提交</h3><p>依据上面的例子，我们将组件中内容修改如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#123;</span><br><span class="line">        type: &#39;add&#39;,</span><br><span class="line">        amount: 8</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Mutation一条重要的原则就是要记住-mutation-必须是同步函数"><a href="#Mutation一条重要的原则就是要记住-mutation-必须是同步函数" class="headerlink" title="Mutation一条重要的原则就是要记住 mutation 必须是同步函数"></a>Mutation一条重要的原则就是要记住 mutation 必须是同步函数</h4><p>action:</p>
+<h2 id="vuex的actions属性"><a href="#vuex的actions属性" class="headerlink" title="vuex的actions属性"></a><a href="https://www.cnblogs.com/luguankun/p/10809454.html">vuex的actions属性</a></h2><p><strong>vuex的actions属性是用来处理异步方法的，通过**</strong>提交mutations实现**<strong>。</strong></p>
+<p>actions里要传入两个参数context和playload</p>
+<p>调用actions的时候，使用this.$store.dispatch(“actionsName”,playload)</p>
+]]></content>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue-钩子函数</title>
+    <url>/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3>Vue生命周期八大钩子函数</h3>
+视图如下：
+<a id="more"></a>
+<img src="/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/v.png" style="zoom:100%;">
+<h3>对应解释</h3>
+
+<ul>
+<li>1.beforeCreate:
+<ul>
+<li>即将创建，此阶段为实例初始化之后，此时的数据观擦和事件机制都未形成</li>
+</ul>
+</li>
+<li>2.created:
+<ul>
+<li>创建完毕，在这个阶段vue实例已经创建完成</li>
+</ul>
+</li>
+<li>3.beforemount:
+<ul>
+<li>即将挂载，判断挂载节点是否存在</li>
+</ul>
+</li>
+<li>4.mounted:
+<ul>
+<li>渲染完毕，异步请求一般写在这个阶段，并将请求到的数据和DOM渲染到页面上</li>
+</ul>
+</li>
+<li>5.beforeUpdate:
+<ul>
+<li>即将更新渲染，表示data数据已更新，页面未更新</li>
+</ul>
+</li>
+<li>6.updated:
+<ul>
+<li>更新渲染后，表示页面和data数据已经全部更新完毕，</li>
+</ul>
+</li>
+<li>7.beforeDestroy:
+<ul>
+<li>销毁之前</li>
+</ul>
+</li>
+<li>8.destroyed:
+<ul>
+<li>销毁之后</li>
+</ul>
+</li>
+
+</ul>]]></content>
+      <tags>
+        <tag>vue.js</tag>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue的相关指令大全</title>
+    <url>/2020/08/21/vue%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<h2>vue的相关指令大全</h2>
+简介：Vue的过程就是定义MVVM（Model-View-ViewModel）各个组成部分的过程的过程。
+<ul>
+<a id="more"></a>
+<li>1.v-model
+<ul>
+<li>在表单上实现双向绑定效果,用到的修饰符会有
+<ul>
+<li> .lazy:默认情况下，v-model同步输入框的值和数据。可以通过这个修饰符，转变为在change事件再同步。</li>
+<li> .number:自动将用户的输入值转化为数值类型。</li>
+<li> .trim:自动过滤用户输入的首尾空格。</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>2.v-on
+<ul>
+<li>
+用来监听dom事件 (一般会简写成@click=v-on:click),使用他可能还会用到修饰符
+<ul>
+<li>.stop 阻止事件继续传播</li>
+<li>.prevent 事件不再重载页面</li>
+<li>.once 事件将只会触发一次</li>
+<li>.self 只当在 event.target 是当前元素自身时触发处理函数</li>
+<li>.passive 告诉浏览器你不想阻止事件的默认行为</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>3.v-for
+<ul>
+<li>用v-for指令根据遍历数组来进行渲染,使用方法如下
+<ul>
+<li> v-for="(item,index) in items"
+</li><li> v-for="item of items"  
+</li></ul>
+</li>
+</ul>
+</li>
+
+<li>4.v-if
+<ul>
+<li>v-if可以实现条件渲染，Vue会根据表达式的值的真假条件来渲染元素。<br>
+</li>
+</ul>
+</li>
+
+
+<li>5.v-else
+<ul>
+<li>v-else是搭配v-if使用的，它必须紧跟在v-if或者v-else-if后面，否则不起作用。</li>
+</ul>
+</li>
+
+<li>6.v-else-if
+<ul>
+<li>v-else-if充当v-if的else-if块，可以链式的使用多次。可以更加方便的实现switch语句。</li>
+</ul>
+</li>
+
+<li>7.v-show
+<ul>
+<li>也是用于根据条件展示元素。和v-if不同的是，如果v-if的值是false，则这个元素被销毁，不在dom中。但是v-show的元素会始终被渲染并保存在dom中，它只是简单的切换css的dispaly属性。
+v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如果要非常频繁的切换，则使用v-show较好；如果在运行时条件不太可能改变，则v-if较好
+</li>
+</ul>
+</li>
+
+<li>8.v-text
+<ul>
+<li>v-text主要用来更新textContent，可以等同于JS的text属性</li>
+</ul>
+</li>
+
+<li>9.v-html
+<ul>
+<li>双大括号的方式会将数据解释为纯文本，而非HTML。为了输出真正的HTML，可以用v-html指令。它等同于JS的innerHtml属性。</li>
+</ul>
+</li>
+
+<li>10.v-pre
+<ul>
+<li>v-pre主要用来跳过这个元素和它的子元素编译过程。可以用来显示原始的Mustache标签。跳过大量没有指令的节点加快编译。</li>
+</ul>
+</li>
+
+
+<li>11.v-cloak
+<ul>
+<li>这个指令是用来保持在元素上直到关联实例结束时进行编译。</li>
+</ul>
+</li>
+<li>12.v-once
+<ul>
+<li>v-once关联的实例，只会渲染一次。之后的重新渲染，实例极其所有的子节点将被视为静态内容跳过，这可以用于优化更新性能。</li>
+</ul>
+</li>
+<li>13.v-bind
+<ul>
+<li>v-bind用来动态的绑定一个或者多个特性。没有参数时，可以绑定到一个包含键值对的对象。常用于动态绑定class和style。以及href等。
+简写为一个冒号【 ：】</li>
+</ul>
+</li>
+</ul>
+
+
+<br>
+更新中...
+
+]]></content>
+      <tags>
+        <tag>vue.js</tag>
+        <tag>css</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于css</title>
+    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
+    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
+<hr>
+<a id="more"></a>
+<p style="color:red">1.关于nth-child</p>
+ul li:first-child{} >> ul的第一个孩子
+
+<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
+<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
+<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
+<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
+<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
+<hr>
+<p style="color:red">2.关于background属性</p>
+background-attachment: ;fixed//固定背景图
+
+<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
+<hr>
+<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
+
+<p>三种样式表区别：</p>
+<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
+<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
+<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人空间</title>
+    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
+    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29849287&auto=1&height=66"></iframe>
+<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
+<a id="more"></a>
+<br>
+Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
+<br>
+<h2>开玩笑了，不要当真哦~</h2>
+<P>性别：男<p></p>
+<P>年龄：20+<p></p>
+<P>职业：程序员<p></p>
+<P>邮箱：15713935339@163.com<p></p>
+<P>座右铭：用双手创造财富~<p></p>
+<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
+</P></P></P></P></P>]]></content>
+      <tags>
+        <tag>我是谁</tag>
+        <tag>开心快乐每一天</tag>
       </tags>
   </entry>
   <entry>
@@ -361,427 +698,114 @@
       </tags>
   </entry>
   <entry>
-    <title>vue-03</title>
-    <url>/2021/02/06/vue-03/</url>
-    <content><![CDATA[<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> 
-<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;">每天一个小知识<span> </span><span style="color:pink">vue小课堂开课了~</span></h4>
+    <title>搭建hexo博客</title>
+    <url>/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
+<hr>
+<h2>前期所需要准备的坏境</h2>
+1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
+<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
+<a id="more"></a>
+<p>如果不会安装，可以参考教程：</p>
+<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
+<p>查看node的版本号
+
+</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
+<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
+<p>查看版本</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
+
+<p>3.前两步已就位>安装hexo</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
+<h6 style="color:red">====================================================================<h6>
+<h2>环境已就位,接下来开始搭建博客</h2>
+<hr>
+<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
+<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
+<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
+<p>4.运行本地服务测试</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
+
+<p>hexo g 说明：生成html文件 </p>
+<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
+<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
+<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
+<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
+<p>已经成功更新上去了，你会了吗？</p>
+<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
+<h6 style="color:red">====================================================================</h6>
+<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
+
+</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
+<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
+<p>下载后的主题都在这里：</p>
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
+
+</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
+
+<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
+<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
+<h6 style="color:red">=============================END====================================</h6>
+
+<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
+</h2></h2></h2></h2></h6></h6>]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>繁花似锦的生活</title>
+    <url>/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/</url>
+    <content><![CDATA[<div style="width:100%;height:60px;background-color:#46679D;border-radius:10px;display:flex;">
+    <h2 style="line-height:60px;color:red; margin: 0 auto;">简简单单的幸福</h2>
+</div>
+<br>
+理由少一点，肚量大一点，嘴巴甜一点，脾气小一点，行动快一点，效率高一点，微笑露一点，脑筋活一点。<p></p>
+<br>
+<div style="display:flex">
+<a href="https://weibo.com/hehedawang" style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/weibo.gif" style="zoom:25%;"></a>  
+<a href="https://author.baidu.com/home?context=%7B%22app_id%22%3A%221630686982573806%22%7D&wfr=bjh" style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/baijia.gif" style="zoom:25%;"></a>
+<a href="https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=3302&adfrom=qqshare&x5PreFetch=1&accountId=MTAwMTAwNjU0NjkxOA%3D%3D&adtag=qqshare&t=1608168284997" style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/qiehao.gif" style="zoom:25%;"></a>  
+<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/wxggh.gif" style="zoom:25%;"></a>  
 </div>
 
-<p>今日课程：vuex</p><a id="more"></a>
-<div style="width:100%;height:60px;background-color:#3D5C9C;border-radius:10px"> <!--more-->
-<h4 style="height:60px;line-height:60px;padding-left:20px;color:red;"><span> </span><span style="color:pink">1.认识vue的vuex的状态管理~</span></h4>
-</div>
-
-<p>前言：Vue的vuex和React的Redux 都统称为同一状态管理，个人的理解是全局状态管理更合适；简单的理解就是你在state中定义了一个数据之后，你可以在所在项目中的任何一个组件里进行获取、进行修改，并且你的修改可以得到全局的响应变更。下面咱们一步一步地剖析下vuex的使用</p>
-<p><strong>Vuex有五个核心概念：<code>state</code></strong>, <code>getters</code><strong>,</strong> <code>mutations</code><strong>,</strong> <code>actions</code><strong>,</strong> <code>modules</code>。</p>
-<ol>
-<li><p>state：vuex的基本数据，用来存储变量</p>
-</li>
-<li><p>geeter：从基本数据(state)派生的数据，相当于state的计算属性</p>
-</li>
-<li><p>mutation：提交更新数据的方法，必须是同步的(如果需要异步使用action)。每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数，提交载荷作为第二个参数。</p>
-</li>
-<li><p>action：和mutation的功能大致相同，不同之处在于 ==》1. Action 提交的是 mutation，而不是直接变更状态。 2. Action 可以包含任意异步操作。</p>
-</li>
-<li><p>modules：模块化vuex，可以让每一个模块拥有自己的state、mutation、action、getters,使得结构非常清晰，方便管理。</p>
-</li>
-</ol>
-<p><strong>Vuex的用法：</strong>先建一个文件夹store(用来放js文件)，在其下建一个index.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import vue from &quot;vue&quot;  &#x2F;&#x2F;引用vue</span><br><span class="line">import Vuex from &quot;vuex&quot;;  &#x2F;&#x2F;引用vuex</span><br><span class="line">vue.use(Vuex);  &#x2F;&#x2F;很重要，使用vuex</span><br><span class="line"></span><br><span class="line">const state &#x3D; &#123;</span><br><span class="line">    name: &#39;王子&#39;,  &#x2F;&#x2F;在state初始化全局变量</span><br><span class="line">    age: 110,</span><br><span class="line">    time:&#39;&#39;</span><br><span class="line">   .........（可以很多）</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const store  &#x3D; new Vuex.Store(&#123;</span><br><span class="line">  state   &#x2F;&#x2F;将上面写的state扔进Vuex.Store，才能被引用到</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export default state; &#x2F;&#x2F;导出</span><br></pre></td></tr></table></figure>
-<p>还有很重要的一步，需要在main.js里面引用import store from “./store”</p>
-<img src="/2021/02/06/vue-03/a.png" style="zoom:80%;">
-
-<p>这时候就在用this.$store.state.name获取到之前的name值了。</p>
-<p><strong>那什么是<code>Getters</code>?它有什么作用？</strong></p>
-<p><code>Getters</code> 我们可以理解为store仓库的一个计算属性，它的作用主要是用来派生出一些新的状态。比如我们要把state状态的数据进行一次映射或者筛选，再把这个结果重新计算并提供给组件使用。举个简单例子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const getters &#x3D; &#123;</span><br><span class="line">    isShow(state) &#123;  &#x2F;&#x2F;写个显示方法，当使用这个方法的时候就会返回state.name的值</span><br><span class="line">        return state.name</span><br><span class="line">    &#125;,</span><br><span class="line">    ishide(state) &#123;</span><br><span class="line">        return state.age  &#x2F;&#x2F;写个显示方法，当使用这个方法的时候就会返回state.age的值</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>数据展示</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &#123;&#123; isname &#125;&#125; &#x2F;&#x2F;王子</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; mapGetters &#125; from &quot;vuex&quot;; &#x2F;&#x2F;getters辅助方法</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    ...mapGetters([&quot;isname&quot;]), &#x2F;&#x2F;ES6语法</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>mutation：</p>
-<p><strong>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。</strong></p>
-<p><strong>接下来我们还是用上一篇文章在state中存放的count为例，来看利用Mutation修改state的count属性。</strong></p>
-<p>利用commit来触发mutation函数</p>
-<p><strong>在mutation函数中添加count的add函数</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const mutations &#x3D; &#123;</span><br><span class="line">    addNum(state) &#123;</span><br><span class="line">        state.num++</span><br><span class="line">    &#125;,</span><br><span class="line">    add(state) &#123;</span><br><span class="line">        state.count +&#x3D; 2</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<p><strong>在组件中使用mutation进行实现叠加器</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#39;add&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Mutation的载荷（payload）"><a href="#Mutation的载荷（payload）" class="headerlink" title="Mutation的载荷（payload）"></a>Mutation的载荷（payload）</h3><p>你可以向store.commit传入额外的参数，即mutation的载荷（payload）：我们还是以上面累加器的例子来实现mutation函数的传参，来动态定义累加的数量。</p>
-<p><strong>在mutation.js中修改add方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const mutations &#x3D; &#123;</span><br><span class="line">  addNum (state) &#123;</span><br><span class="line">    state.num++</span><br><span class="line">  &#125;,</span><br><span class="line">  add (state, n) &#123;</span><br><span class="line">    state.count +&#x3D; n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>在组件中store.commit如何传参</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#39;add&#39;, 5)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>在mutation传参（载荷）可以传递一个参数也可以传递一个对象。让我们修改下上面的例子</strong></p>
-<p><strong>mutation.js文件中修改如下</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const mutations &#x3D; &#123;</span><br><span class="line">  addNum (state) &#123;</span><br><span class="line">    state.num++</span><br><span class="line">  &#125;,</span><br><span class="line">  add (state, payload) &#123;</span><br><span class="line">    state.count +&#x3D; payload.amount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>组件中修改如下</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#39;add&#39;, &#123; amount: 10 &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="在store-commit中可以进行对象风格的提交"><a href="#在store-commit中可以进行对象风格的提交" class="headerlink" title="在store.commit中可以进行对象风格的提交"></a>在store.commit中可以进行对象风格的提交</h3><p>依据上面的例子，我们将组件中内容修改如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; count &#125;&#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;addCount&quot;&gt;+ADD&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import store from &#39;@&#x2F;store&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addCount () &#123;</span><br><span class="line">      store.commit(&#123;</span><br><span class="line">        type: &#39;add&#39;,</span><br><span class="line">        amount: 8</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="Mutation一条重要的原则就是要记住-mutation-必须是同步函数"><a href="#Mutation一条重要的原则就是要记住-mutation-必须是同步函数" class="headerlink" title="Mutation一条重要的原则就是要记住 mutation 必须是同步函数"></a>Mutation一条重要的原则就是要记住 mutation 必须是同步函数</h4><p>action:</p>
-<h2 id="vuex的actions属性"><a href="#vuex的actions属性" class="headerlink" title="vuex的actions属性"></a><a href="https://www.cnblogs.com/luguankun/p/10809454.html">vuex的actions属性</a></h2><p><strong>vuex的actions属性是用来处理异步方法的，通过**</strong>提交mutations实现**<strong>。</strong></p>
-<p>actions里要传入两个参数context和playload</p>
-<p>调用actions的时候，使用this.$store.dispatch(“actionsName”,playload)</p>
-]]></content>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MYSQL-解决跨天(1天)统计正确时长</title>
-    <url>/2021/01/18/MYSQL-1/</url>
-    <content><![CDATA[<h2>如题：思路>使用(TIME_TO_SEC)函数计算两个时间段的S数，换算成小时，如果跨天,需要对（12）临界值再次进行判断  注释：根据项目中需求针对性的做出的方案，不一定适合全部，只供参考</h2>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br><span class="line">CREATE DEFINER&#x3D;&#96;hehe&#96;@&#96;%&#96; PROCEDURE &#96;时间格式化&#96;(IN &#96;tstart&#96; varchar(200),IN &#96;tend&#96; varchar(200),IN &#96;faly&#96; varchar(200),OUT &#96;num&#96; varchar(200))</span><br><span class="line">begin</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">#解决跨天统计时长</span><br><span class="line">if faly &#x3D; &#39;否&#39; then</span><br><span class="line">  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) &#x2F; 3600 into num;</span><br><span class="line">  if substring(num,1,1)&#x3D; &#39;-&#39; then </span><br><span class="line">	   select TRIM(replace(num,&#39;-&#39;,&#39; &#39;)) into num;</span><br><span class="line">	end if;</span><br><span class="line">end if;</span><br><span class="line">if faly &#x3D; &#39;是&#39; then</span><br><span class="line">  if tstart &#x3D;  tend then</span><br><span class="line">	 select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend)) + 24 into num;</span><br><span class="line">	end if;</span><br><span class="line">  if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &lt; SUBSTRING_INDEX(tend,&#39;:&#39;,1) then</span><br><span class="line">	  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600 into num ;</span><br><span class="line">		select 24 - num into num;</span><br><span class="line">	end if;</span><br><span class="line">	if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &gt; SUBSTRING_INDEX(tend,&#39;:&#39;,1) then</span><br><span class="line">	   if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &lt;12 and SUBSTRING_INDEX(tend,&#39;:&#39;,1) &lt;12 then</span><br><span class="line">		    select  (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600 into num;</span><br><span class="line">		    if substring(num,1,1)&#x3D; &#39;-&#39; then </span><br><span class="line">	      select  24 - TRIM(replace(num,&#39;-&#39;,&#39; &#39;))  into num ;</span><br><span class="line">	     end if;</span><br><span class="line">		   select  24 - (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))&#x2F; 3600  into num;</span><br><span class="line">	    end if;</span><br><span class="line">	    end if;</span><br><span class="line">	   if SUBSTRING_INDEX(tstart,&#39;:&#39;,1) &gt;12 and SUBSTRING_INDEX(tend,&#39;:&#39;,1) &lt; 12 then</span><br><span class="line">		  select (TIME_TO_SEC(tstart) - TIME_TO_SEC(tend))  into num;</span><br><span class="line">		 end if;</span><br><span class="line">end if;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VUE-全家桶</title>
-    <url>/2021/01/18/VUE-%E5%85%A8%E5%AE%B6%E6%A1%B6/</url>
-    <content><![CDATA[<h2>一、简介：山穷水尽疑无路，柳暗花明又一村</h2>
-<p>本文介绍Vue全家桶：Vue+Vue-router+Vuex+axios。</p>
-<a id="more"></a>
-<p>vue全家桶：vue + vuex (状态管理) + vue-router (路由) + vue-resource +axios +UI框架（iview、vant、elementUI等等）</p>
-<h2>二、VUE</h2>
-<p>Vue有著名的全家桶系列，包含了vue-router（http://router.vuejs.org），
-vuex（http://vuex.vuejs.org），
- vue-resource（https://github.com/pagekit/vue-resource）
- 。再加上构建工具vue-cli，sass样式，就是一个完整的vue项目的核心构成</p>
-
-<p>1.引入Vue</p>
-<ul>
-<li>开发环境：< script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" ></li>
-<li>生产环境：< script src="https://cdn.jsdelivr.net/npm/vue"></li>
-</ul>
-<p>环境引入完毕，接下来就可以进行实例了：官方文档说的很清楚了><a href="https://cn.vuejs.org/v2/guide/">官方文档</a></p>
-
-<p>2.Vue-router</p>
-<p>1.干什么？</p>
-<ul>
-<li> 嵌套的路由/视图表</li>
-<li> 模块化的、基于组件的路由配置</li>
-<li> 路由参数、查询、通配符</li>
-<li> 基于 Vue.js 过渡系统的视图过渡效果</li>
-<li> 嵌细粒度的导航控制</li>
-<li> 带有自动激活的 CSS class 的链接</li>
-<li> HTML5 历史模式或 hash 模式，在 IE9 中自动降级</li>
-<li> 自定义的滚动条行为</li>
-</ul>
-<p>2.进入<a href="https://router.vuejs.org/zh/">官方文档</a>查看更多...</p>
-3.Vuex
-<p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，适合开发大型单页应用。</p>
-<p>具体见<a href="https://vuex.vuejs.org/zh/">Vuex官方教程</a></p>
-4.axios
-<p>axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它可以帮你：</p>
-<ul>
-<li>从浏览器中创建 XMLHttpRequest</li>
-<li>从 node.js 发出 http 请求</li>
-<li>支持 Promise API</li>
-<li>转换请求和响应数据</li>
-<li>自动转换JSON数据</li>
-</ul>
-5.其他与之配合的框架：elementUI
-<p>elementUI 是基于 Vue 2.0 桌面端中后台组件库。</p>]]></content>
-      <tags>
-        <tag>vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>相册墙</title>
-    <url>/2021/01/06/img/</url>
-    <content><![CDATA[<hr>
-<a id="more"></a>
-<div style="float:left">
-<img src="/2021/01/06/img/a1.png">
-<hr>
-<img src="/2021/01/06/img/a2.png">
-<hr>
-<img src="/2021/01/06/img/a3.png">
+<div style="display:flex;margin-top:20px">
+<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t1.gif" style="zoom:25%;"></a>  
+<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t2.gif" style="zoom:25%;"></a>  
+<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t3.gif" style="zoom:25%;"></a>  
+<a style="padding-right:20px"><img src="/2020/11/04/%E7%94%9F%E6%B4%BB%E6%97%A5%E8%AE%B0/t4.gif" style="zoom:25%;"></a>  
 </div>
 
 ]]></content>
       <tags>
-        <tag>相册</tag>
+        <tag>WSH</tag>
       </tags>
   </entry>
   <entry>
-    <title>关于css</title>
-    <url>/2021/01/04/%E5%85%B3%E4%BA%8Ecss/</url>
-    <content><![CDATA[<p>前言:最为一个合格的程序员：在写东西之前，先不要马上就写，先分析布局结构，这样在做的时候会事半功倍</p>
-<hr>
-<a id="more"></a>
-<p style="color:red">1.关于nth-child</p>
-ul li:first-child{} >> ul的第一个孩子
-
-<p>ul li:last-child{} &gt;&gt; 最后一个孩子</p>
-<p>ul li:nth-child(5){} &gt;&gt; 指定第几个孩子</p>
-<p>ul li:nth-child(3n+1){} &gt;&gt; /<em>匹配第1、第4、第7、…、每3个为一组的第1个LI</em>/</p>
-<p>ul li:nth-child(odd){} &gt;&gt; 基数孩子</p>
-<p>ul li:nth-child(even){}&gt;&gt; 偶数孩子</p>
-<hr>
-<p style="color:red">2.关于background属性</p>
-background-attachment: ;fixed//固定背景图
-
-<p>background-size: cover;//铺满整个容器//设置图片大小属性</p>
-<hr>
-<p style="color:red">3.样式优先级：内联样式>内部样式>外部样式</p>
-
-<p>三种样式表区别：</p>
-<p>行内样式表 ：优点 书写方便；缺点 没有实现样式和结构相分离；使用情况 较少；控制范围 控制一个标签(少)。</p>
-<p>内部样式表：优点 部分结构和样式相分离； 缺点 没有彻底分；使用情况 较多；控制范围 控制一个页面(中)。</p>
-<p>外部样式表：优点 完全实现结构和样式相分离； 缺点 需要引入；使用情况 最多，推荐；控制范围 控制整个站点(多)。</p>
-]]></content>
+    <title>联通流量卡</title>
+    <url>/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/</url>
+    <content><![CDATA[  <h4>可爱的人终会相遇--欢迎你</h4>
+  <p style="color:red">简介：联通流量卡，上网专用卡。详情看下图</p>
+  <img src="/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/a1.png" style="zoom:50%;">
+  <img src="/2021/03/17/%E8%81%94%E9%80%9A%E6%B5%81%E9%87%8F%E5%8D%A1/a2.jpg" style="zoom:30%;">
+  <p>备注：需要实名，介意勿扰</p>
+  <h1>管理员VX：wang_329439737</h1>]]></content>
       <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>个人空间</title>
-    <url>/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/</url>
-    <content><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29849287&auto=1&height=66"></iframe>
-<h1>我叫娱有我心，欢迎你来踩踩我~</h1>
-<a id="more"></a>
-<br>
-Hello 很高兴我们在这里相遇，我是一名90后的小伙子，来凡间经历生老病死。
-<br>
-<h2>开玩笑了，不要当真哦~</h2>
-<P>性别：男<p></p>
-<P>年龄：20+<p></p>
-<P>职业：程序员<p></p>
-<P>邮箱：15713935339@163.com<p></p>
-<P>座右铭：用双手创造财富~<p></p>
-<img src="/2021/01/04/%E4%B8%AA%E4%BA%BA%E7%A9%BA%E9%97%B4/a.png" style="zoom:50%;">
-</P></P></P></P></P>]]></content>
-      <tags>
-        <tag>我是谁</tag>
-        <tag>开心快乐每一天</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue的相关指令大全</title>
-    <url>/2020/08/21/vue%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<h2>vue的相关指令大全</h2>
-简介：Vue的过程就是定义MVVM（Model-View-ViewModel）各个组成部分的过程的过程。
-<ul>
-<a id="more"></a>
-<li>1.v-model
-<ul>
-<li>在表单上实现双向绑定效果,用到的修饰符会有
-<ul>
-<li> .lazy:默认情况下，v-model同步输入框的值和数据。可以通过这个修饰符，转变为在change事件再同步。</li>
-<li> .number:自动将用户的输入值转化为数值类型。</li>
-<li> .trim:自动过滤用户输入的首尾空格。</li>
-</ul>
-</li>
-</ul>
-</li>
-
-<li>2.v-on
-<ul>
-<li>
-用来监听dom事件 (一般会简写成@click=v-on:click),使用他可能还会用到修饰符
-<ul>
-<li>.stop 阻止事件继续传播</li>
-<li>.prevent 事件不再重载页面</li>
-<li>.once 事件将只会触发一次</li>
-<li>.self 只当在 event.target 是当前元素自身时触发处理函数</li>
-<li>.passive 告诉浏览器你不想阻止事件的默认行为</li>
-</ul>
-</li>
-</ul>
-</li>
-
-<li>3.v-for
-<ul>
-<li>用v-for指令根据遍历数组来进行渲染,使用方法如下
-<ul>
-<li> v-for="(item,index) in items"
-</li><li> v-for="item of items"  
-</li></ul>
-</li>
-</ul>
-</li>
-
-<li>4.v-if
-<ul>
-<li>v-if可以实现条件渲染，Vue会根据表达式的值的真假条件来渲染元素。<br>
-</li>
-</ul>
-</li>
-
-
-<li>5.v-else
-<ul>
-<li>v-else是搭配v-if使用的，它必须紧跟在v-if或者v-else-if后面，否则不起作用。</li>
-</ul>
-</li>
-
-<li>6.v-else-if
-<ul>
-<li>v-else-if充当v-if的else-if块，可以链式的使用多次。可以更加方便的实现switch语句。</li>
-</ul>
-</li>
-
-<li>7.v-show
-<ul>
-<li>也是用于根据条件展示元素。和v-if不同的是，如果v-if的值是false，则这个元素被销毁，不在dom中。但是v-show的元素会始终被渲染并保存在dom中，它只是简单的切换css的dispaly属性。
-v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如果要非常频繁的切换，则使用v-show较好；如果在运行时条件不太可能改变，则v-if较好
-</li>
-</ul>
-</li>
-
-<li>8.v-text
-<ul>
-<li>v-text主要用来更新textContent，可以等同于JS的text属性</li>
-</ul>
-</li>
-
-<li>9.v-html
-<ul>
-<li>双大括号的方式会将数据解释为纯文本，而非HTML。为了输出真正的HTML，可以用v-html指令。它等同于JS的innerHtml属性。</li>
-</ul>
-</li>
-
-<li>10.v-pre
-<ul>
-<li>v-pre主要用来跳过这个元素和它的子元素编译过程。可以用来显示原始的Mustache标签。跳过大量没有指令的节点加快编译。</li>
-</ul>
-</li>
-
-
-<li>11.v-cloak
-<ul>
-<li>这个指令是用来保持在元素上直到关联实例结束时进行编译。</li>
-</ul>
-</li>
-<li>12.v-once
-<ul>
-<li>v-once关联的实例，只会渲染一次。之后的重新渲染，实例极其所有的子节点将被视为静态内容跳过，这可以用于优化更新性能。</li>
-</ul>
-</li>
-<li>13.v-bind
-<ul>
-<li>v-bind用来动态的绑定一个或者多个特性。没有参数时，可以绑定到一个包含键值对的对象。常用于动态绑定class和style。以及href等。
-简写为一个冒号【 ：】</li>
-</ul>
-</li>
-</ul>
-
-
-<br>
-更新中...
-
-]]></content>
-      <tags>
-        <tag>vue.js</tag>
-        <tag>css</tag>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue-钩子函数</title>
-    <url>/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3>Vue生命周期八大钩子函数</h3>
-视图如下：
-<a id="more"></a>
-<img src="/2020/05/13/vue-%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/v.png" style="zoom:100%;">
-<h3>对应解释</h3>
-
-<ul>
-<li>1.beforeCreate:
-<ul>
-<li>即将创建，此阶段为实例初始化之后，此时的数据观擦和事件机制都未形成</li>
-</ul>
-</li>
-<li>2.created:
-<ul>
-<li>创建完毕，在这个阶段vue实例已经创建完成</li>
-</ul>
-</li>
-<li>3.beforemount:
-<ul>
-<li>即将挂载，判断挂载节点是否存在</li>
-</ul>
-</li>
-<li>4.mounted:
-<ul>
-<li>渲染完毕，异步请求一般写在这个阶段，并将请求到的数据和DOM渲染到页面上</li>
-</ul>
-</li>
-<li>5.beforeUpdate:
-<ul>
-<li>即将更新渲染，表示data数据已更新，页面未更新</li>
-</ul>
-</li>
-<li>6.updated:
-<ul>
-<li>更新渲染后，表示页面和data数据已经全部更新完毕，</li>
-</ul>
-</li>
-<li>7.beforeDestroy:
-<ul>
-<li>销毁之前</li>
-</ul>
-</li>
-<li>8.destroyed:
-<ul>
-<li>销毁之后</li>
-</ul>
-</li>
-
-</ul>]]></content>
-      <tags>
-        <tag>vue.js</tag>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>英语词汇学(三)</title>
-    <url>/2020/01/10/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%89/</url>
-    <content><![CDATA[<h2 style="color:red;font-weight:blod">第三节：Word formation 词的构造法</h2>
-<ul>
-<li>目录：
-<ul>
-<li>1.词素</li>
-<li>2.词素变体</li>
-<li>3.词素分类</li>
-<li>4.词根词干</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-<hr>
-<h5>1.Morphemes 词素(形位,语素) </h5>
-定义：The minimal meaningful units are known sa morphemes 最小的,有意思的单位叫做词素。
-<h5>2.词素变体 Allomorphs
-<p>词素是抽象单位，由分离的形素morph在话语中实现大多数词素是单个形素：bird、tree、green、sad.单独在句子中起作用的叫mono-morphemic words 单语素词</p>
-<p>一些词素根据在词中的位置不同可以由一个以上的morph（语素形式或词素形式）去现实  some morphems are realized by more than one morph accrording their position in a word </p>
-<h5>3.词素分类</h5>
-<ul>
-<li>1.Free morphemes (自由词素)：彼此之间相互独立的词素叫自由词素 Morphemes which are independent of other orphemes are considered to be free</li>
-<li>2.Bound morphemes (粘附词素):不能单独成立词的词素叫粘附词素 Morphemes which can not occur as separate words are bound 
-<ul>
-<li>1.Bound root 粘附词根 ：是附加形式，只能和其他词素组合在一起去构成一个单词</li>
-<li>2.Affix 词缀（前/后）：词缀是附属在单词上或者单词元素上以修改词语意义和功能的结构。</li>
-</ul>
-</li>
-</ul>
-<h4>4.词根词干</h4>
-<p>词根(Aroot)是一个单词的基础形式，这个形式若在拆分下去就不再是个词了 Aroot is the basic from of a word which cannot be further analyzed without total loss of identity</p>
-<p>词干(stem)可以被定义为任何词缀都能添加的形式。A  Stem can be defined as a form to which affixes of any kind can be added </p>
-<hr>
-<h2>单词积累</h2>
-1.structure 结构 >structurally 结构上<br>
-2.separated 分开<br>
-3.unit 单位/单元<br>
-4.comprises 包括<br>
-5.composition 成分 /结构<br>
-6.derivational 衍生  <br> 
-7.inflectional 曲折 <br></h5>]]></content>
-      <tags>
-        <tag>英语词汇学</tag>
+        <tag>流量卡</tag>
       </tags>
   </entry>
   <entry>
@@ -948,73 +972,50 @@ v-if有更高的切换开销,v-show有更高的初始渲染开销。因此，如
       </tags>
   </entry>
   <entry>
-    <title>搭建hexo博客</title>
-    <url>/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>既然你找到了这篇文章，想必对hexo搭建博客网站感兴趣，接下来会一一介绍。大神请绕道。</p>
-<hr>
-<h2>前期所需要准备的坏境</h2>
-1.node.js >没有的先去安装>下载：<a href="ttps://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
-<p>端开发框架和环境都是需要 Node.js ，先安装node.js开发环境，vue的运行是要依赖于node的npm的管理工具来实现，下载https://nodejs.org/en/，安装完成之后，打开cmd开始输入命令。（我用的是win10系统，所以需要管理员权限，右键点击以管理员身份运行cmd），不然会出现很多报错。</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a.png" style="zoom:100%;">
+    <title>英语词汇学(三)</title>
+    <url>/2020/01/10/%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E5%AD%A6-%E4%B8%89/</url>
+    <content><![CDATA[<h2 style="color:red;font-weight:blod">第三节：Word formation 词的构造法</h2>
+<ul>
+<li>目录：
+<ul>
+<li>1.词素</li>
+<li>2.词素变体</li>
+<li>3.词素分类</li>
+<li>4.词根词干</li>
+</ul>
+</li>
+</ul>
 <a id="more"></a>
-<p>如果不会安装，可以参考教程：</p>
-<p>https://www.runoob.com/nodejs/nodejs-install-setup.html</p>
-<p>查看node的版本号
-
-</p><p>下载好node之后，以管理员身份打开cmd管理工具，，输入 node -v ，回车，查看node版本号，出现版本号则说明安装成功。</p><br><img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a1.png" style="zoom:100%;"><p></p>
-<p>2.安装git&gt;没有的先去官网下载安装&gt;不会的进来<a href="https://www.cnblogs.com/wj-1314/p/7993819.html">https://www.cnblogs.com/wj-1314/p/7993819.html</a></p>
-<p>查看版本</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a2.png" style="zoom:100%;">
-
-<p>3.前两步已就位>安装hexo</p>
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a4.png" style="zoom:100%;">
-<h6 style="color:red">====================================================================<h6>
-<h2>环境已就位,接下来开始搭建博客</h2>
 <hr>
-<p>1.初始化>在自己的电脑上找到一块风雨宝地,创建一个文件夹（这里我创建的文件夹为myblog）</p>
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a5.png" style="zoom:100%;">
-<p>2.使用git或cmd,进入myblog根目录,这个文件夹最好不要乱动，所有东西都会放在这里</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a6.png" style="zoom:100%;">
-<p>3.输入命令符>hexo init>等待安装完成，myblog文件夹下会有东西，说明安装成功</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a7.png" style="zoom:100%;">
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a8.png" style="zoom:100%;">
-<p>4.运行本地服务测试</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a11.png" style="zoom:100%;">
-
-<p>hexo g 说明：生成html文件 </p>
-<p>hexo s 说明：启用本地服务，一般端口是4000 </p>
-<p>在浏览器输入localHost：4000 看到以下信息，恭喜你，博客已经成功建立了。</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a9.png" style="zoom:100%;">
-<p>5.如何建立我自己的文章>输入命令符：hexo new "我的第一篇文章"</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a12.png" style="zoom:100%;">
-<p>创建的文件会存放在E:\myblog\source\_posts文件夹下>再次运行hexo s</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a13.png" style="zoom:100%;">
-<p>已经成功更新上去了，你会了吗？</p>
-<h2>你已经学会搭建了，接下来你可以研究如何跟换主题等等了....<h2>
-<h6 style="color:red">====================================================================</h6>
-<p>1.既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 官方主题。
-
-</p><p>个人比较喜欢的2个主题：hexo-theme-jekyll 和 hexo-theme-yilia。</p>
-<p>首先下载这个主题：</p><br>$ cd /e/myblog/  &gt;进入我们的根目录<br>$ git clone <a href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia   &gt;克隆主题<p></p>
-<p>下载后的主题都在这里：</p>
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a14.png" style="zoom:100%;">
-<p>修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a15.png" style="zoom:100%;">
-
-</p><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</p>
-
-<img src="/2020/01/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/a16.png" style="zoom:100%;">
-<p>恭喜你，已经学会换主题。主题换的方法都一样的。</p>
-<h6 style="color:red">=============================END====================================</h6>
-
-<h2>现在只是在本地服务上运行，下节会介绍如法发布到网上。这里我们用到了github仓库，没有的可以先提前github官网注册账号<h2>
-</h2></h2></h2></h2></h6></h6>]]></content>
+<h5>1.Morphemes 词素(形位,语素) </h5>
+定义：The minimal meaningful units are known sa morphemes 最小的,有意思的单位叫做词素。
+<h5>2.词素变体 Allomorphs
+<p>词素是抽象单位，由分离的形素morph在话语中实现大多数词素是单个形素：bird、tree、green、sad.单独在句子中起作用的叫mono-morphemic words 单语素词</p>
+<p>一些词素根据在词中的位置不同可以由一个以上的morph（语素形式或词素形式）去现实  some morphems are realized by more than one morph accrording their position in a word </p>
+<h5>3.词素分类</h5>
+<ul>
+<li>1.Free morphemes (自由词素)：彼此之间相互独立的词素叫自由词素 Morphemes which are independent of other orphemes are considered to be free</li>
+<li>2.Bound morphemes (粘附词素):不能单独成立词的词素叫粘附词素 Morphemes which can not occur as separate words are bound 
+<ul>
+<li>1.Bound root 粘附词根 ：是附加形式，只能和其他词素组合在一起去构成一个单词</li>
+<li>2.Affix 词缀（前/后）：词缀是附属在单词上或者单词元素上以修改词语意义和功能的结构。</li>
+</ul>
+</li>
+</ul>
+<h4>4.词根词干</h4>
+<p>词根(Aroot)是一个单词的基础形式，这个形式若在拆分下去就不再是个词了 Aroot is the basic from of a word which cannot be further analyzed without total loss of identity</p>
+<p>词干(stem)可以被定义为任何词缀都能添加的形式。A  Stem can be defined as a form to which affixes of any kind can be added </p>
+<hr>
+<h2>单词积累</h2>
+1.structure 结构 >structurally 结构上<br>
+2.separated 分开<br>
+3.unit 单位/单元<br>
+4.comprises 包括<br>
+5.composition 成分 /结构<br>
+6.derivational 衍生  <br> 
+7.inflectional 曲折 <br></h5>]]></content>
       <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
+        <tag>英语词汇学</tag>
       </tags>
   </entry>
 </search>
